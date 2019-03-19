@@ -1,0 +1,26 @@
+{
+  "name": "nodejsproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "expres": "0.0.5",
+    "express": "^4.16.4",
+    "express-layout": "^0.1.0",
+    "jquery": "^3.3.1",
+    "pug": "^2.0.3",
+    "router": "^1.3.3",
+    "sqlite": "^3.0.2",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "popper": "^1.0.1"
+  }
+}
