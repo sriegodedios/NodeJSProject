@@ -5,6 +5,14 @@ const layout = require('express-layout')
 const routes = require('./routes')
 const app = express()
 
+var session = require('express-session');
+
+app.use( session({
+  secret            : 'super secret key',
+  resave            : false,
+  saveUninitialized : true
+}));
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
@@ -26,6 +34,9 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
+
+
 app.listen(3000, () => {
   console.log(`App running at http://localhost:3000`)
 })
+

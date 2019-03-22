@@ -59,3 +59,113 @@
     font-weight: 600;
     text-decoration: none;
 }
+
+.google-button__icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 6px 0;
+    width: 18px;
+    height: 15px;
+    box-sizing: border-box;
+  }
+
+  .btn-ksu { 
+    color: #512888; 
+    background-color: #fff; 
+    border-color: #130269; 
+  } 
+   
+  .btn-ksu:hover, 
+  .btn-ksu:focus, 
+  .btn-ksu:active, 
+  .btn-ksu.active, 
+  .open .dropdown-toggle.btn-ksu { 
+    color: #fff; 
+    background-color: #512888; 
+    border-color: #130269; 
+  } 
+   
+  .btn-ksu:active, 
+  .btn-ksu.active, 
+  .open .dropdown-toggle.btn-ksu { 
+    background-image: none; 
+   color: #fff;
+  } 
+   
+  .btn-ksu.disabled, 
+  .btn-ksu[disabled], 
+  fieldset[disabled] .btn-ksu, 
+  .btn-ksu.disabled:hover, 
+  .btn-ksu[disabled]:hover, 
+  fieldset[disabled] .btn-ksu:hover, 
+  .btn-ksu.disabled:focus, 
+  .btn-ksu[disabled]:focus, 
+  fieldset[disabled] .btn-ksu:focus, 
+  .btn-ksu.disabled:active, 
+  .btn-ksu[disabled]:active, 
+  fieldset[disabled] .btn-ksu:active, 
+  .btn-ksu.disabled.active, 
+  .btn-ksu[disabled].active, 
+  fieldset[disabled] .btn-ksu.active { 
+    background-color: #fff; 
+    border-color: #130269; 
+  } 
+   
+  .btn-ksu .badge { 
+    color: #fff; 
+    background-color: #512888; 
+  }
+
+  .space{
+      margin-bottom: 10px;
+  }
+
+  .context-dark, .bg-gray-dark, .bg-primary {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+    color: #ffffff;
+}
+.nav-list li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-list li a:hover:before {
+    margin-left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 23px;
+    font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+.social-container .col {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.nav-list li a:before {
+    content: "\f14f";
+    font: 400 21px/1 "Material Design Icons";
+    color: #4d6de6;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: -28px;
+    margin-right: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .22s ease;
+}
