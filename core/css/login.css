@@ -169,3 +169,73 @@ ul, ol {
     visibility: hidden;
     transition: .22s ease;
 }
+
+.hr{
+    width: 50px;
+    height: 4px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin: 0 auto 60px;
+    background: #e4e4e4;
+}
+    
+.hr.orange {
+    height: 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 60%;
+}
+
+.margin-special-case{
+    margin: 0px !important
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+  }
+  .btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+  }
+  .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+  }
+
+  .facebook:hover{
+    background-color: #3b5998 !important;
+    outline-color: #3b5998 !important;
+  }
+
+  .linkedin:hover{
+    background-color: #0077B5 !important;
+    outline-color: #0077B5 !important;
+  }
+
+  .github:hover{
+      background-color: #c9510c !important;
+      outline-color: #c9510c !important;
+  }
+
+  .cr{
+      margin-top:10px; 
+      color: white;
+  }
+  
+  .extra{
+      margin-bottom:100px;
+  }

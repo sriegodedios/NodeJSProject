@@ -31,7 +31,11 @@ router.get( '/app', cas.bounce, function ( req, res, next ) {
 
 
 router.get('/', (req, res) => {
-  res.send('Hello World!')
+  fs.readFile('templates/index.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    res.end();
+  });
 });
 
 router.get('/login', (req,res) => {
@@ -62,7 +66,7 @@ router.get('/core/:type/:file',(req,res) => {
 
   }
 
-
+  console.log(content)
 
   fs.readFile(path, function(err, data) {
     res.writeHead(200, {'Content-Type': content});
