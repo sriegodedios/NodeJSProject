@@ -5,6 +5,21 @@ const layout = require('express-layout')
 const routes = require('./routes')
 const app = express()
 
+
+
+
+
+// Require static assets from public folder
+//pp.use(express.static(path.join(__dirname, 'public')));
+
+// Set 'views' directory for any views 
+// being rendered res.render()
+//app.set('views', path.join(__dirname, 'views'));
+
+// Set view engine as EJS
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 var session = require('express-session');
 
 app.use( session({
@@ -31,7 +46,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack)
-  res.status(500).send('Something broke!')
+  res.status(500).send('Something broke! This will be reported!')
 })
 
 

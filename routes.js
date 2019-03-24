@@ -1,5 +1,6 @@
 ﻿// routes.js
 var CASType = require('./models/cas-validation-response');
+var emailer = require('./modules/emailer')
 const express = require('express')
 const router = express.Router()
 const layout = require('express-layout')
@@ -31,11 +32,12 @@ router.get( '/app', cas.bounce, function ( req, res, next ) {
 
 
 router.get('/', (req, res) => {
-  fs.readFile('templates/index.html', function(err, data) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    res.end();
-  });
+  //fs.readFile('templates/index.html', function(err, data) {
+   // res.writeHead(200, {'Content-Type': 'text/html'});
+   // res.write(data);
+    //res.end();
+    res.render('templates/index');
+ // });
 });
 
 router.get('/login', (req,res) => {
@@ -73,6 +75,25 @@ router.get('/core/:type/:file',(req,res) => {
     res.write(data);
     res.end();
   });
+});
+
+router.post('/function/:type', (req,res) => {
+  var type = req.params.type;
+  switch(type){
+    case 'email':
+      console.log(req.body)
+      var name = req.body.Name;
+      var email = req.body.Email; 
+      var subject = req.body.Subject;
+      var messege = req.body.Messege;
+
+      var e = new emailer();
+      e.sendEmail(name,email,subject,messege)
+      res.send('Email Sent');
+    break;
+
+
+  }
 });
 
 
