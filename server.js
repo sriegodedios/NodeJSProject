@@ -5,6 +5,8 @@ const layout = require('express-layout')
 const routes = require('./routes')
 const app = express()
 
+const port = 3000;
+//var httpsServer = https.createServer(options, app);
 
 
 
@@ -51,7 +53,7 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(3000, () => {
-  console.log(`App running at http://localhost:3000`)
+app.listen(port, () => {
+  console.log(`App running at http://localhost:`+port)
 })
 
