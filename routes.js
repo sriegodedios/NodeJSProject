@@ -18,7 +18,7 @@ var CASAuthentication = require('cas-authentication');
  
 var cas = new CASAuthentication({
   cas_url     : CASURL,
-  service_url : 'http://127.0.0.1:3000/validate',
+  service_url : 'http://sriegodedios.com/validate',
   cas_version     : '2.0',
   session_name    : 'cas_user',
   session_info    : 'ValidateTicket',
@@ -123,7 +123,7 @@ router.route('/register')
         var ticket = req.query.ticket
         var location = req.params.location
         
-        request(CASURL+'serviceValidate?service=http://127.0.0.1:3000/validate/app/&ticket='+ticket+'&format=JSON', function (error, response, body) {
+        request(CASURL+'serviceValidate?service=http://sriegodedios.com/validate/app/&ticket='+ticket+'&format=JSON', function (error, response, body) {
            // res.send(JSON.parse(body))
            
            console.log(body);
