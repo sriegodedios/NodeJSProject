@@ -65,6 +65,9 @@ router.get('/core/:type/:file',(req,res) => {
     case 'js':
       content = 'text/javascript';
     break;
+    case 'pdf':
+      content = 'application/pdf'
+    break;
 
   }
 
