@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
    // res.writeHead(200, {'Content-Type': 'text/html'});
    // res.write(data);
     //res.end();
-    res.render('templates/index');
+    res.render('templates/index',{title='Shane Riegodedios'});
  // });
 });
 

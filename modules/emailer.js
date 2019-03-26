@@ -4,6 +4,8 @@ class emailer{
     {
         this.email ="nodejsapplicationemail@gmail.com"
         this.password ="shaner26mhixon"
+
+        //this.email = ""
     
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
