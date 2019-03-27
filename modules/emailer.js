@@ -6,7 +6,6 @@ class emailer{
         this.password ="shaner26mhixon"
 
         //this.email = ""
-    
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
