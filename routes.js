@@ -1,4 +1,4 @@
-﻿// routes.js
+// routes.js
 var CASType = require('./models/cas-validation-response');
 var emailer = require('./modules/emailer')
 const express = require('express')
@@ -18,7 +18,7 @@ var CASAuthentication = require('cas-authentication');
  
 var cas = new CASAuthentication({
   cas_url     : CASURL,
-  service_url : 'http://sriegodedios.com/validate',
+  service_url : 'https://sriegodedios.com/validate',
   cas_version     : '2.0',
   session_name    : 'cas_user',
   session_info    : 'ValidateTicket',
@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
    // res.writeHead(200, {'Content-Type': 'text/html'});
    // res.write(data);
     //res.end();
-    res.render('templates/index',{title='Shane Riegodedios'});
+    res.render('templates/index',{title:'Shane Riegodedios'});
  // });
 });
 
