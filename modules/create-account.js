@@ -10,25 +10,25 @@ var con = mysql.createConnection({
     host: dbhost,
     user: user,
     password: dbPassword,
-    database: "Application"
+    database: "sriegode_Application"
   });
+var crypto = require('crypto');
 
   class CreateAccount {
-    static Insert(FName, LName, Birthday, Email, Username, Password) {
-        if (err) throw err;
-        console.log("Connected!");
-     
-        var sql = "INSERT INTO `Accounts` (FirstName, LastName, Username, Password) VALUES ('"+FName+"', '"+LName+"', '"+Birthday+"', '"+Username+"', '"+encryptPassword+"')";
-        
-        con.query(sql, function (err, result) {
-          if (err) throw err;
+    static Insert(FName, LName, Birthday, Gender, Email, Username, Password) {
+       con.connect(function(err) {
+            if (err) throw err;
+            console.log("Connected!");
+            var encryptedPassword = crypto.createHash('sha256').update(Password).digest('base64');
 
-          console.log("1 record inserted");
-      
+              var sql = "INSERT INTO `Accounts` (FirstName, LastName, Birthday, Gender, Email, Username, Password) VALUES ('"+FName+"', '"+LName+"', '"+Birthday+"', '"+Gender+"', '"+Email+"','"+Username+"', '"+encryptedPassword+"')";
+            con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("1 record inserted");
         });
-
-        
+       });    
     }
+    
   }
 
   module.exports = CreateAccount

@@ -103,8 +103,9 @@ router.post('/function/:type', (req,res) => {
       var Email = req.body.Email
       var Username = req.body.Username;
       var Password = req.body.Password;
+      var Gender = req.body.Gender;
 
-      createAccount.Insert(FName,LName,DateOfBirth,Email,Username,Password)
+      createAccount.Insert(FName,LName,Gender,DateOfBirth,Email,Username,Password)
 
 
 
