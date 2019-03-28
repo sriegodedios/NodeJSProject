@@ -1,6 +1,7 @@
 // routes.js
 var CASType = require('./models/cas-validation-response');
-var emailer = require('./modules/emailer')
+var emailer = require('./modules/emailer');
+var authentication = require('./modules/login-authentication');
 const express = require('express')
 const router = express.Router()
 const layout = require('express-layout')

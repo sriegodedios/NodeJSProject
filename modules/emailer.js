@@ -1,9 +1,14 @@
 var nodemailer = require('nodemailer');
+var mysql = require('mysql')
+var fs = require('fs');
+let rawdata = fs.readFileSync(__dirname+'/../../credentials.json','utf8');  
+let credentials = JSON.parse(rawdata)
+
 class emailer{
     constructor()
     {
-        this.email ="nodejsapplicationemail@gmail.com"
-        this.password ="shaner26mhixon"
+        this.email = credentials["credentials"]["email"]["account"];
+        this.password = credentials["credentials"]["email"]["password"];
 
         //this.email = ""
         this.transporter = nodemailer.createTransport({
