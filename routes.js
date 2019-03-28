@@ -1,6 +1,7 @@
 // routes.js
 var CASType = require('./models/cas-validation-response');
 var emailer = require('./modules/emailer');
+var createAccount = require('./modules/create-account');
 var authentication = require('./modules/login-authentication');
 const express = require('express')
 const router = express.Router()
@@ -95,6 +96,18 @@ router.post('/function/:type', (req,res) => {
       e.sendEmail(name,email,subject,messege)
       res.send('Email Sent');
     break;
+    case 'register':
+      var FName = req.body.FirstName;
+      var LName = req.body.LastName;
+      var DateOfBirth = req.body.DateOfBirth;
+      var Email = req.body.Email
+      var Username = req.body.Username;
+      var Password = req.body.Password;
+
+      createAccount.Insert(FName,LName,DateOfBirth,Email,Username,Password)
+
+
+
 
 
   }
