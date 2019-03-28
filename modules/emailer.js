@@ -12,7 +12,12 @@ class emailer{
 
         //this.email = ""
         this.transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'mail.sriegodedios.com',
+            port: 587,
+            secure: false,
+            tls: {
+                rejectUnauthorized:false
+             },
             auth: {
                 user: this.email,
                 pass: this.password
