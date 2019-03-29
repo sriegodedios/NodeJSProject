@@ -99,7 +99,7 @@ router.post('/function/:type', (req,res) => {
     case 'register':
       var FName = req.body.FirstName;
       var LName = req.body.LastName;
-      var DateOfBirth = req.body.DateOfBirth;
+      var DateOfBirth = req.body.Birthday;
       var Email = req.body.Email
       var Username = req.body.Username;
       var Password = req.body.Password;

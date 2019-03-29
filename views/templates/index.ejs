@@ -206,8 +206,12 @@
                                         Please correct your errors first.
                                      </div>
                                      <div id="Success_Msg_Email" class="alert alert-success d-none" role="alert">
-                                        Your messege has been sent! 
+                                        <strong>Your messege has been sent! </strong>
+                                        <hr>
+  <p class="mb-0">Additionally you must wait five seconds before you can send anoter messege.</p>
+
                                      </div>
+
                                     <form method="POST" id="email_form" name="email-form" action="/function/email">
                                             <div class="form-group">
                                                     <input class="form-control form-control-lg" id="form_name" name="Name" type="text" placeholder="Name"/>
@@ -418,6 +422,9 @@
                                                         	   // alert(Response);
                                                         	   $("#Success_Msg_Email").removeClass(" d-none")
                                                         	   ResetForm();
+                                                        	   $("#Success_Msg_Email").fadeTo(5000, 500).slideUp(500, function(){
+                                                                    $("#Success_Msg_Email").slideUp(500);
+                                                                 });
                                                         	});
                                                         	
                                                         
