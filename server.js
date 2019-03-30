@@ -20,7 +20,7 @@ const port = 3000;
 
 // Set view engine as EJS
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+//app.set('view engine', 'html');
 
 var session = require('express-session');
 

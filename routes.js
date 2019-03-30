@@ -4,6 +4,7 @@ var emailer = require('./modules/emailer');
 var createAccount = require('./modules/create-account');
 var authentication = require('./modules/login-authentication');
 const express = require('express')
+//const expresslayouts = require('express-ejs-layouts');
 const router = express.Router()
 const layout = require('express-layout')
 var fs = require('fs');
@@ -38,7 +39,7 @@ router.get('/', (req, res) => {
    // res.writeHead(200, {'Content-Type': 'text/html'});
    // res.write(data);
     //res.end();
-    res.render('templates/index',{title:'Shane Riegodedios'});
+    res.render('pages/index',{title:'Shane Riegodedios'});
  // });
 });
 
@@ -100,12 +101,17 @@ router.post('/function/:type', (req,res) => {
       var FName = req.body.FirstName;
       var LName = req.body.LastName;
       var DateOfBirth = req.body.Birthday;
-      var Email = req.body.Email
+      var Email = req.body.Email;
       var Username = req.body.Username;
       var Password = req.body.Password;
       var Gender = req.body.Gender;
 
-      createAccount.Insert(FName,LName,Gender,DateOfBirth,Email,Username,Password)
+     
+
+      createAccount.Insert(FName,LName,DateOfBirth,Gender,Email,Username,Password)
+
+      res.send("Registered!")
+
 
 
 
@@ -120,13 +126,13 @@ router.post('/function/:type', (req,res) => {
 //  res.send('This is the go')
 //});
 
+
+
+
+
 router.route('/register')
     .get((req,res) => {
-      fs.readFile('templates/register.html', function(err, data) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
-        res.end();
-      });
+      res.render('pages/register',{title:'Register'});
     }).post((req, res) => {
       console.log(req.body);
 

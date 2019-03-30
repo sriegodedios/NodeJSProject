@@ -2,10 +2,10 @@
 
 <HTML>
     <head>
-        <% include partials/head %>
+        <% var rootPath = '../'; %>
+        <%- include(rootPath +"partials/head.ejs") %>
         <title><%= title %></title>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <script type="text/javascript"   src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        
 </head>
 
     </head>
@@ -472,7 +472,7 @@
         
     </body>
     <footer class="section footer-classic context-dark bg-image" style="background: #2d3246; ">
-        <% include partials/footer %>
+        <%- include(rootPath+"partials/footer.ejs") %>
 
 
     </footer>
