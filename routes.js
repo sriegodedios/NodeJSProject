@@ -83,6 +83,15 @@ router.get('/core/:type/:file',(req,res) => {
   });
 });
 
+router.get('/function/activation/:activationLink', (req,res) => {
+  var link = req.params.activationLink;
+  createAccount.Activate(link);
+  res.send("Account Activated");
+
+
+
+
+})
 router.post('/function/:type', (req,res) => {
   var type = req.params.type;
   switch(type){
@@ -110,23 +119,15 @@ router.post('/function/:type', (req,res) => {
 
       createAccount.Insert(FName,LName,DateOfBirth,Gender,Email,Username,Password)
 
-      res.send("Registered!")
+      
+      createAccount.SendActivationLink(Username, FName, LName, Email);
 
-
-
-
-
+      res.redirect('/register/checkEmail/?FName='+FName+'&LName='+LName+'&Email='+Email);
+      //console.log(link);
+      //res.send("Registered!")
 
   }
 });
-
-
-
-//router.post('/login', (req,res) => {
-//  res.send('This is the go')
-//});
-
-
 
 
 
@@ -135,9 +136,27 @@ router.route('/register')
       res.render('pages/register',{title:'Register'});
     }).post((req, res) => {
       console.log(req.body);
-
-
     });
+router.route('/register/checkEmail')
+    .get((req,res) =>{
+      if (Object.keys(req.query).length === 0) 
+      {
+        res.send("Access Denied");
+      }else{
+        
+        var FName = req.query.FName;
+        var LName = req.query.LName;
+        var Email = req.query.Email;
+
+        res.render('pages/thankyou',{title:'Registration Complete!', FirstName: FName, LastName: LName, Email:Email});
+
+      }
+      
+
+
+
+      
+    }) 
 
   router.route('/validate/:location')
     .get((req,res) => {
@@ -145,7 +164,7 @@ router.route('/register')
         var location = req.params.location
         
         request(CASURL+'serviceValidate?service=http://sriegodedios.com/validate/app/&ticket='+ticket+'&format=JSON', function (error, response, body) {
-           // res.send(JSON.parse(body))
+          
            
            console.log(body);
             const validationResponse = new CASType.CASValidationResponse(JSON.parse(body));
@@ -178,16 +197,7 @@ router.route('/login')
             }else{
               res.send('This is the go')
             }
-       // User.findOne({ where: { username: username } }).then(function (user) {
-       //    if (!user) {
-        //       res.redirect('/login');
-         //   } else if (!user.validPassword(password)) {
-         //       res.redirect('/login');
-         //   } else {
-         //       req.session.user = user.dataValues;
-         //       res.redirect('/dashboard');
-         //   }
-       // });
+  
       
        
     });

@@ -15,6 +15,8 @@ var con = mysql.createConnection({
   });
 var crypto = require('crypto');
 
+var emailer = require('./emailer');
+
 function MakeString()
     {
       var now = Date.now();
@@ -62,17 +64,97 @@ function MakeString()
                 //con.query(sql, function (err, result) {
                 //  if (err) throw err;
                  // var sql1 = "SELECT ID FROM `Accounts` WHERE Username=' "+Username+ "'";
-                  var sql2= "INSERT INTO `Activation` (ID, ActivationLink) VALUES ((SELECT ID FROM `Accounts` WHERE Username='"+Username+"'), '"+uniqueString+"')"
-                  con.query(sql2, function (err, result) {
-                    if (err) throw err;
-                    console.log("1 record inserted");
-                    return true;
-                });          
-                });                
+                     
+                }); 
+                
+                
+              var sql2= "INSERT INTO `Activation` (ID, ActivationLink) VALUES ((SELECT ID FROM `Accounts` WHERE Username='"+Username+"'), '"+uniqueString+"')"
+              con.query(sql2, function (err, result) {
+                if (err) throw err;
+                console.log("1 record inserted");
+                return true;
+          });       
+                
+                
+
             });
+
+           
 
             return false;
        
+    }
+    static Activate(link)
+    {
+     
+     // con.connect(function(err) {
+     //   if (err) throw err;
+     //   console.log("Connected!");
+
+        var sql = "SELECT ID FROM `Activation` WHERE ActivationLink='"+link+"'";
+        con.query(sql,function (err, result) {
+          var temp;
+          if (err) throw err;
+          console.log(result)
+          temp = result[0].ID;
+          var sql2 = "UPDATE `Accounts` SET Status='Activated' WHERE ID='"+temp+"'";
+          con.query(sql2,function (err, result) {
+          if (err) throw err;
+          console.log("Account Activated")
+          var sql3 ="DELETE FROM `Activation` WHERE `Activation`.`Index` = '"+link+"'";
+          con.query(sql3,function (err, result) {
+            if (err) throw err;
+          });
+          
+        });
+
+    //    });
+
+        
+
+      });
+
+    }
+
+    static SendActivationLink(Username, FName, LName, Email)
+    {
+      var temp;
+      setTimeout(function(){
+        console.log("DOG");
+    
+        
+           con.query("SELECT ActivationLink FROM Activation ACT INNER JOIN Accounts ACC ON ACT.ID=ACC.ID WHERE ACC.Username='"+Username+"'", function (err, result, fields) {
+          // if any error while executing above query, throw error
+              if (err) throw err;
+          // if there is no error, you have the result
+            //console.log(result);
+            
+              temp = result[0].ActivationLink;
+
+              var e1 = new emailer();
+
+      
+
+              var Message ="Hi, "+FName+" "+LName+",<br/>"
+                  +"You have successfully registered! To activate your account,<br/>"
+                  +"please use this link to activate your account!<br/>"
+                  +"<a href='https://sriegodedios.com/function/activation/"+temp+"'>Click Here To Activate!</a><br/><br/>"
+                  +"Do not reply to this message.";
+
+
+
+              e1.sendEmailR(Email, Message)
+
+
+
+            
+             
+        });  
+        
+        }, 200);
+        
+    
+ 
     }
 
     
@@ -81,5 +163,6 @@ function MakeString()
 
     
   }
+
 
   module.exports = CreateAccount

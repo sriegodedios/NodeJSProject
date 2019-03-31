@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<HTML>
+    <head>
+        
+        <% var rootPath = '../'; %>
+        <%- include(rootPath +"partials/head.ejs") %>   
+        <title><%= title %></title>
+
+    </head>
+    
+    
+    <body style="margin-top: 60px; background-color: #DDE0E3;">
+        <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                
+                <a class="navbar-brand" href="#">Shane Riegodedios</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/login/">Login</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                </nav>
+            </div>
+        </header>
+    <div class="col-lg-8 offset-lg-2">
+            <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="container">
+                        <h3>Your Account has Been Created!</h3>
+                        <hr/>
+                        <h6>Hey there, <%= FirstName %> <%= LastName %>!</h6><br/>
+                        Thanks again for signing up! An email was sent to <strong><%= Email %></strong> with the link to activate your account.<br/>
+                        If you don't recieve it, try checking your spam folder. 
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+
+
+
