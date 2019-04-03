@@ -51,7 +51,7 @@ class emailer{
     sendEmail(name, email, subject, messege)
     {
         this.mailOptions["from"] = this.email;
-        this.mailOption["to"] = "krishane@ksu.edu"
+        this.mailOptions["to"] = "krishane@ksu.edu";
         this.mailOptions["subject"] = name +' => '+ email + ': '+ subject;
         this.mailOptions["text"]= messege;
 

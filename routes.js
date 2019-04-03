@@ -15,6 +15,11 @@ var CASURL = "https://signin.k-state.edu/WebISO/";
 var bodyParser = require('body-parser'); 
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
+var crypto = require('crypto');
+
+
+
+
 
 
 var CASAuthentication = require('cas-authentication');
@@ -125,6 +130,26 @@ router.post('/function/:type', (req,res) => {
       res.redirect('/register/checkEmail/?FName='+FName+'&LName='+LName+'&Email='+Email);
       //console.log(link);
       //res.send("Registered!")
+      break;
+      case 'authenticate':
+        var username = req.body.username;
+        var password = req.body.password;
+        console.log("authenticating start")
+        if(username && password)
+        {
+          var encryptedPassword = crypto.createHash('sha256').update(password).digest('base64');
+          //console.log("Encrypted Password: "+);
+          authentication.Authenticate(req, res, username, encryptedPassword);
+        }else{
+          res.redirect('/login/?failure=1');
+        }
+
+        break;
+        default:
+          res.send("NOT FOUND");
+        break;
+
+        
 
   }
 });
@@ -187,8 +212,24 @@ router.route('/login')
     })
     .post((req, res) => {
       console.log(req.body)
-        var username = req.body.username,
-            password = req.body.password;
+        var username = req.body.username;
+        var password = req.body.password;
+
+
+        if(username && password)
+        {
+          //if there is a username and password
+
+
+
+
+        }else{
+          
+          res.redirect('/login/failure=1');
+
+        }
+
+
 
             
             if(password != 'hi')
@@ -201,6 +242,18 @@ router.route('/login')
       
        
     });
+
+    router.route('/home')
+      .get((req, res) => {
+        if (req.session.loggedin) {
+          res.send('Welcome back, ' + req.session.username + '!');
+        } else {
+          res.send('Please login to view this page!');
+        }
+        res.end();
+      });
+
+
   
     
 

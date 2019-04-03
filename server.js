@@ -9,6 +9,23 @@ const port = 3000;
 //var httpsServer = https.createServer(options, app);
 
 
+var mysql = require('mysql')
+var fs = require('fs');
+let rawdata = fs.readFileSync(__dirname+'/../credentials.json','utf8');  
+let credentials = JSON.parse(rawdata)
+
+
+
+var user = credentials["credentials"]["mysql"]["account"];
+var dbPassword = credentials["credentials"]["mysql"]["password"];
+var dbhost = credentials["credentials"]["mysql"]["host"];
+var con = new mysql.createConnection({
+  multipleStatements: true,
+  host: dbhost,
+  user: user,
+  password: dbPassword,
+  database: "sriegode_Application"
+});
 
 
 // Require static assets from public folder

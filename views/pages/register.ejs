@@ -284,7 +284,7 @@
                                 
                                 function CheckFirstname()
                                 {
-                                    var name_len = $("#field_firstname").val().length;
+                                    var name_len = $("#field_firstname").val().trim().length;
                                     //alert(name_len);
                                     if(name_len == 0)
                                     {
@@ -300,7 +300,7 @@
                                 
                                 function CheckLastname()
                                 {
-                                    var name_len = $("#field_lastname").val().length;
+                                    var name_len = $("#field_lastname").val().trim().length;
                                     
                                     if(name_len == 0)
                                     {
@@ -315,7 +315,7 @@
                                 
                                 function CheckEmail()
                                 {
-                                    var email_len = $("#field_email").val().length;
+                                    var email_len = $("#field_email").val().trim().length;
                                     var email = $("#field_email").val();
                                     
                                 
@@ -341,7 +341,7 @@
                                 
                                 function CheckBirthday()
                                 {
-                                    var birthday_len = $("#datepicker").val().length;
+                                    var birthday_len = $("#datepicker").val().trim().length;
                                     
                                     //alert(birthday_len)
                                     
@@ -371,7 +371,7 @@
                                 
                                 function CheckUsername()
                                 {
-                                    var username_len = $("#field_username").val().length;
+                                    var username_len = $("#field_username").val().trim().length;
                                     
                                     if(username_len == 0)
                                     {
@@ -386,7 +386,7 @@
                                 
                                 function CheckPassword()
                                 {
-                                    var password_len = $("#field_password").val().length;
+                                    var password_len = $("#field_password").val().trim().length;
                                     
                                     if(password_len < 6)
                                     {
@@ -401,8 +401,8 @@
                                 
                                 function CheckCPassword()
                                 {
-                                    var cpassword = $("#field_cpassword").val();
-                                    var password = $("#field_password").val();
+                                    var cpassword = $("#field_cpassword").val().trim();
+                                    var password = $("#field_password").val().trim();
                                     if(cpassword != password)
                                     {
                                         $( "#field_cpassword" ).addClass( " is-invalid" );

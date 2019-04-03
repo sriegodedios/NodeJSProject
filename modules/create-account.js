@@ -6,13 +6,13 @@ let credentials = JSON.parse(rawdata)
 var user = credentials["credentials"]["mysql"]["account"];
 var dbPassword = credentials["credentials"]["mysql"]["password"];
 var dbhost = credentials["credentials"]["mysql"]["host"];
-var con = mysql.createConnection({
-    multipleStatements: true,
-    host: dbhost,
-    user: user,
-    password: dbPassword,
-    database: "sriegode_Application"
-  });
+var con = new mysql.createConnection({
+  multipleStatements: true,
+  host: dbhost,
+  user: user,
+  password: dbPassword,
+  database: "sriegode_Application"
+});
 var crypto = require('crypto');
 
 var emailer = require('./emailer');
@@ -36,9 +36,9 @@ function MakeString()
 
   class CreateAccount {
     static Insert(FName, LName, Birthday, Gender, Email, Username, Password) {
-       con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
+      // con.connect(function(err) {
+       //     if (err) throw err;
+       //     console.log("Connected!");
             var encryptedPassword = crypto.createHash('sha256').update(Password).digest('base64');
             // Comes in as MM/DD/YYYY -> Convert tp YYYY-MM-DD
             var temp = Birthday.split("/")
@@ -77,7 +77,7 @@ function MakeString()
                 
                 
 
-            });
+     //       });
 
            
 
@@ -101,9 +101,10 @@ function MakeString()
           con.query(sql2,function (err, result) {
           if (err) throw err;
           console.log("Account Activated")
-          var sql3 ="DELETE FROM `Activation` WHERE `Activation`.`Index` = '"+link+"'";
+          var sql3 ="DELETE FROM `Activation` WHERE ActivationLink = '"+link+"'";
           con.query(sql3,function (err, result) {
             if (err) throw err;
+            console.log("Removed activation link;")
           });
           
         });

@@ -308,7 +308,7 @@
                                                
                                                function CheckName()
                                                {
-                                                   var name_len = $("#form_name").val().length;
+                                                   var name_len = $("#form_name").val().trim().length;
                                                    
                                                    if(name_len == 0)
                                                    {
@@ -322,7 +322,7 @@
                                                
                                                function CheckEmail()
                                                {
-                                                   var email_len = $("#form_email").val().length;
+                                                   var email_len = $("#form_email").val().trim().length;
                                                    var email = $("#form_email").val()
                                                    
                                                
@@ -341,7 +341,7 @@
                                                
                                                function CheckSubject()
                                                {
-                                                   var subject_len = $("#form_subject").val().length;
+                                                   var subject_len = $("#form_subject").val().trim().length;
                                                    
                                                    if(subject_len == 0)
                                                    {
@@ -355,7 +355,7 @@
                                                
                                                function CheckTextarea()
                                                {
-                                                   var message_len = $("#form_textarea").val().length;
+                                                   var message_len = $("#form_textarea").val().trim().length;
                                                    
                                                    if(message_len == 0)
                                                    {
