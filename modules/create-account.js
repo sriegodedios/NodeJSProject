@@ -84,14 +84,47 @@ function MakeString()
             return false;
        
     }
-    static Activate(link)
+    static Activate(res, link)
     {
      
      // con.connect(function(err) {
      //   if (err) throw err;
      //   console.log("Connected!");
 
-        var sql = "SELECT ID FROM `Activation` WHERE ActivationLink='"+link+"'";
+
+      var updateSQL = "UPDATE `Accounts` A INNER JOIN `Activation` AC ON A.ID=AC.ID SET A.Status='Activated' WHERE AC.ActivationLink = ?"
+
+      con.query(updateSQL,[link],function(err, result){
+          if(err) throw err;
+
+          console.log("Activated User");
+
+          console.log(result.changedRows);
+         
+          if (result.affectedRows > 0) {
+            //If the row changed
+
+             var sqlDelete ="DELETE FROM `Activation` WHERE ActivationLink = ?";
+             con.query(sqlDelete,[link], function (err, result) {
+                if (err) throw err;
+                console.log("Removed activation link;")
+
+                res.redirect('/register/activated');
+
+
+
+            });
+          }else{
+            console.log("The activation link is no longer valid");
+
+            res.send("This link no longer is valid")
+
+
+
+          }
+
+       }); 
+       /* var sql = "SELECT ID FROM `Activation` WHERE ActivationLink='"+link+"'";
         con.query(sql,function (err, result) {
           var temp;
           if (err) throw err;
@@ -105,6 +138,7 @@ function MakeString()
           con.query(sql3,function (err, result) {
             if (err) throw err;
             console.log("Removed activation link;")
+
           });
           
         });
@@ -113,7 +147,7 @@ function MakeString()
 
         
 
-      });
+      });*/
 
     }
 

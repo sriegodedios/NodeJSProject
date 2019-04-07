@@ -40,8 +40,7 @@ function Authenticate(req, res, Username, Password)
           req.username = Username;
 
 
-          res.send("Logged in!")
-
+          res.redirect('/home')
 
 
 

@@ -88,14 +88,16 @@ router.get('/core/:type/:file',(req,res) => {
   });
 });
 
+router.get('/register/activated', (req,res) => {
+  res.render('pages/activated', {title: 'Account Activated'})
+
+});
+
 router.get('/function/activation/:activationLink', (req,res) => {
   var link = req.params.activationLink;
-  createAccount.Activate(link);
-  res.send("Account Activated");
-
-
-
-
+  createAccount.Activate(res, link);
+  //res.send("Account Activated");
+  
 })
 router.post('/function/:type', (req,res) => {
   var type = req.params.type;
@@ -246,9 +248,12 @@ router.route('/login')
     router.route('/home')
       .get((req, res) => {
         if (req.session.loggedin) {
-          res.send('Welcome back, ' + req.session.username + '!');
+          //res.send('Welcome back, ' + req.session.username + '!');
+          res.render('pages/home',{title: 'Home'})
+          
+          
         } else {
-          res.send('Please login to view this page!');
+         res.send('Please login to view this page!');
         }
         res.end();
       });
