@@ -1,7 +1,7 @@
 const GoogleCloudStorage = require('@google-cloud/storage');
   
-  const GOOGLE_CLOUD_PROJECT_ID = 'gcs-demo-123456'; // Replace with your project ID
-  const GOOGLE_CLOUD_KEYFILE = 'path-to-the-private-key'; // Replace with the path to the downloaded private key
+  const GOOGLE_CLOUD_PROJECT_ID = 'windy-celerity-236018'; // Replace with your project ID
+  const GOOGLE_CLOUD_KEYFILE = '../My_First_Project-6f01f677a385.json'; // Replace with the path to the downloaded private key
   
   const storage = GoogleCloudStorage({
     projectId: GOOGLE_CLOUD_PROJECT_ID,

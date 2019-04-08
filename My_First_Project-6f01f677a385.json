@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "windy-celerity-236018",
+  "private_key_id": "6f01f677a385918f8ed39beaababe275888f27bd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDr3t5B+eTi/cFW\nD6phmIzttp2N8bneKODmNeRg45WK6gxpDJbUn75tDPCBY0TWZEgLqEijhB9//wls\nNGyE1YGuNH/LXrqGydq4aDgrzlscGZq4DEKmStPlf1mt2TpQiL3Yl5ZC4hcCwhMv\nqiDgxDmRDNASsFA65Ea3O9hOAYfsMT0hpaHdXdAUdUU//zAZkc9idR4CdudyxDd5\njubS3HqoISm2AOaIek9Zmi/Ql6mimSfCG2aEsCPadNmJXw1xOBBPxhtsIMbcx+vm\nj1I35XIjZDSkxZe4nAQRsusGcq9XsWymbNMkfBP1US0O1e8IiWFNB+2ZEonseyN1\nqb/xaJeXAgMBAAECggEAF1aHbkbAD3elLBNDvAFgnFqvzy4mQmWQDycw8CdEkiij\nTreYqvQdXuPjXiII2x+0AzdE7KzzgvIkqAit3hzUBn0aUfCPCywo0Is7V5ZE7Ixa\nAzDvXU3VFoWZxXpTa0mEY0xoaTi+px610EcIlsTDn2cBpX+9iH4ywwmQVvOO099A\nsFEDnX4G59BoyPkgeabYbELbtPooxbod1Ov/nUitfJy909/PNfdG9+GIyQfx+SMe\nUEq2dYYfPO9tboWFoapmhqZntk24L+mYBonMAS3dvw42VjvqloHoXW697TeCaODe\nE8WtB4Sq71tVbAeq4IBgarILaWPug07yGIDMZyWbWQKBgQD/GKGW/m+JyPp2NjFC\nYf/CcUpfsgGuAmgqYdawr9Hnevrugsaxbp0gANj96U07cdG0E4/kCKmI86oJm7So\nQ7fq7Cltvtvzu2xO80ObGkOv6+wTxw+PDuX8Rf8zACfkmuqQSUbP9yFjxLjYeduM\ng1ug50uWn2xOjltfR7pxM+pH/wKBgQDstMyyKWvrdeMgoDPEHX3z8qLl9Rv+FksN\nn8Ujq16iXT7FCR4slR397ssoIUGWRyjyVU1cOGAxGKCshJg/ql7grKF19sz8wWTG\nTJV/2K/0R2F91zTyAVCJHVwP07PhIFTO9I8sAqFlg8kxsCfZKr4b3ekau7GQ7auk\nsnga7S7waQKBgQDohTIdaPSQOkKaZ9FEugEf4pYxXhcL3qPGJgJEcS66ea2qpEeq\nSbItDri70OGWEqxcIQyihYbLD5dpRKVKTteg6fzlTPg+VRNnb3OrOCiEfV5ltKeo\n9aKK7d6tRTIXvWGbfT9vpsqnnxQCNij6Dm4B33JV7CEUBcyhr8bxEqo1TwKBgAVe\n6NIWDIPQLfIckHAfty7kz3tmP1dZjCRn/qIbjk8izHzOAyhBzedoFqX3czSEstIk\ny1ePU+dpRqQDciznobV5VUSG8AnAHZg+PpojAYMKZ5TiYCopi3lA+EjHpeoywJnd\nhK4b9SuHfPYqqAzOYnfhZhucLKA8NEvNXNpHjWwZAoGAI2icLataUUfSUhs+Hycb\nttFZWX44e6v0Jsrn+GyvC2RKMgRjgNKZAlyBitqyYQ2DiHulTT/29IdvsWM+5Hus\n++HgP3L1GeP6WxU3OKPXGaWMQ+dNi67YhcBMzwJCg8XPOGjG413HrAwMb6hasLbG\nfrOvwUu6Zceft8IimHjemdA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sriegodedios@windy-celerity-236018.iam.gserviceaccount.com",
+  "client_id": "115464849612937077187",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sriegodedios%40windy-celerity-236018.iam.gserviceaccount.com"
+}

@@ -1,8 +1,8 @@
-const gcsHelpers = require('../helpers/google-cloud-storage');
+const gcsHelpers = require('../modules/google-cloud-storage');
   
 const { storage } = gcsHelpers;
 
-const DEFAULT_BUCKET_NAME = 'gcs-bucket-demo'; // Replace with the name of your bucket
+const DEFAULT_BUCKET_NAME = 'sriegodedios'; // Replace with the name of your bucket
 
 /**
  * Middleware for uploading file to GCS.
