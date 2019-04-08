@@ -253,7 +253,7 @@ router.route('/login')
           
           
         } else {
-         res.send('Please login to view this page!');
+         res.redirect('/login')
         }
         res.end();
       });
