@@ -9,8 +9,6 @@ const GoogleCloudStorage = require('@google-cloud/storage');
   });
 
 
-
-
   exports.getPublicUrl = (bucketName, fileName) => `https://storage.googleapis.com/${bucketName}/${fileName}`;
   /**
    * Copy file from local to a GCS bucket.

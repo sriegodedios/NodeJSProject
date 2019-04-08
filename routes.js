@@ -17,6 +17,15 @@ router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 var crypto = require('crypto');
 
+const Multer = require('multer');
+  
+  const multer = Multer({
+    storage: Multer.MemoryStorage,
+    limits: {
+      fileSize: 10 * 1024 * 1024, // Maximum file size is 10MB
+    },
+  });
+  
 
 
 
@@ -37,6 +46,9 @@ router.get( '/app', cas.bounce, function ( req, res, next ) {
    
   res.send( '<html><body>Hello!</body></html>' );
 });
+
+
+
 
 
 router.get('/', (req, res) => {
@@ -147,9 +159,22 @@ router.post('/function/:type', (req,res) => {
         }
 
         break;
+        case uploadVideo:
+        
+          multer.single('video'),
+          gcsMiddlewares.sendUploadToGCS,
+          (req, res, next) => {
+            if (req.file && req.file.gcsUrl) {
+              return res.send(req.file.gcsUrl);
+            }
+        
+            return res.status(500).send('Unable to upload');
+          }
+        break;
         default:
           res.send("NOT FOUND");
         break;
+
 
         
 
@@ -257,6 +282,34 @@ router.route('/login')
         }
         res.end();
       });
+    
+    router.route('/upload')
+      .get((req, res) => {
+        if (req.session.loggedin) {
+          //res.send('Welcome back, ' + req.session.username + '!');
+          res.render('pages/upload',{title: 'Upload'})
+          
+          
+        } else {
+         res.redirect('/login')
+        }
+        res.end();
+      });
+
+    function AuthRedirect(req, res, path)
+    {
+      if (req.session.loggedin) {
+        //res.send('Welcome back, ' + req.session.username + '!');
+        res.render('pages/home',{title: 'Home'})
+        
+        
+      } else {
+        res.redirect('/login')
+      }
+      
+      res.end();
+    
+    }
 
 
   
