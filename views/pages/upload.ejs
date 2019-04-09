@@ -166,10 +166,10 @@ a.card:hover {
    color: #212529;
     text-decoration: none;
   }
-
-
-
-
+  
+  .space{
+      margin-bottom: 10px;
+  }
 
 
 
@@ -219,7 +219,7 @@ a.card:hover {
         </div>
     </header>
     <div class="wrapper" >
-        <nav id="sidebar" style="">
+        <!--nav id="sidebar" style="">
             <div class="sidebar-header">
                 <h5>BOOTSTRAP SIDEBAR</h5>
             </div>
@@ -275,148 +275,86 @@ a.card:hover {
                     <a href="#" class="article">article</a>
                 </li>
             </ul>
-        </nav>
+        </nav-->
+ 
 
-        <div class="content" style="padding-top: 20px">
-            <div class="container">
-                <h3>Register</h3>
-                <form method='post' action='/functions/regiter'>
+        <!--div class="content" style="padding-top: 20px">
+            <div class="content-wrapper">
+                <div class="col-lg-8 offset-lg-2">
+                <h4>Upload Video</h4>
+                
+            
+           
+               </div>     
+                </div
+                <!--div class="col-lg-12">
+              
+        </div-->
+        <div class="container-fluid" style="padding-top: 20px">
+                <div class="col-lg-8 offset-lg-2">
+                <h3>Upload Video</h2>
+                <form method="post" action="/function/uploadVideo">
+                    <input type="hidden" name="ID"/>
                 <div class="row space">
-                    <div class="col-md-12">
-                        <!----div class="card"-->
-                            
-                               
-                               
-                                <div class="card">
-                                    <h5 class="card-header">Basic Info</h5>
-                                <div class="card-body">
-                                
-                                    <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                              <label for="inputFirstName4">First Name</label>
-                                              <input type="text" class="form-control" name="FirstName" id="inputFirstName4" placeholder="* First Name">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                              <label for="inputLastName4">Last Name</label>
-                                              <input type="test" name="LastName" class="form-control" id="inputLastName4" placeholder="* Last Name">
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Birthday</label>
-                                            <input name="DayOfBirth" id="datepicker" width="276" />
-                                            <script>
-                                                $('#datepicker').datepicker({
-                                                    uiLibrary: 'bootstrap4'
-                                                });
-                                            </script>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Gender</label>
-                                        <!----div class="form-check">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                              Male
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                            <label class="form-check-label" for="exampleRadios2">
-                                              Female
-                                            </label>
-                                          </div-->
-                                          <select name="Gender" class="form-control">
-                                                <option>Select an Option</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                              </select>
-    
-    
-                                     </div>
-                                    
-                                
-                            </div>
-                        </div>
-                     
-                    
-                    <!----/div-->
-                    </div>
-                    
-                    
-                </div>
-                <div class="row space">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <h5 class="card-header">
-                                    Account Info
-                                </h5>
-                                <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-7">
-                                                <label>Email</label>
-                                                <input type="email" name="Email" class="form-control" placeholder="* email"/>
-                                                
-                                            </div>
-                                        </div>
-                                    <div class="form-group">
-                                            <label>Username</label>
-                                            <input type="text" name="Username" class="form-control" placeholder="* username"/>
-                                    </div>
-                                    <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                              <label for="inputFirstName4">Password</label>
-                                              <input type="password" name="Password" class="form-control"  id="inputFirstName4" placeholder="* Password">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                              <label for="inputLastName4">Confirm Password</label>
-                                              <input type="password" name="CPassword" class="form-control" id="inputLastName4" placeholder="* Conform Password">
-                                            </div>
-                                    </div>
+                    <div class="col-lg-12">
+                        
+                        <div class="card">
+                            <h4 class="card-header">
+                                Video Information
+                            </h4>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input class="form-control" type="text"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" rows="5"></textarea>
                                 </div>
                             </div>
-    
-    
                         </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
+                    </div>
+                </div>
+                <div class="row space">
+                    <div class="col-lg-12">
+                        
+                        <div class="card">
+                            <h4 class="card-header">
+                               Upload 
+                            </h4>
+                            <div class="card-body">
+                                <div class="form-group">
+                                     <label for="exampleFormControlFile1">Input File</label>
+                                     <input type="file" class="form-control-file" id="exampleFormControlFile1">
+ 
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row space">
+                    <div class="col-lg-12">
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                
+                                     
+                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Upload Video</button>
+
+ 
+                        
+                              
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="row space">
-                        <div class="col-md-12">
-                                <div class="card card-body bg-light">
-                                        <div class="form-row">
-                                                <div class="form-group col-md-1">
-                                                  <div class="card">
-                                                      <div class="card body">
-                                                            <div class="small-2 columns" style="text-align: center;">
-                                                                    
-                                                                <input style="margin: 25px;" type="checkbox" value="">
-                                                            </div>
-                                                      </div>
-                                                  </div>
-                                                </div>
-                                                
-                                                 <div class="form-group col-md-11">
-                                                    Check here to indicate you have read and agree to the terms of the customer agreement page.
-                                                </div>
-                                            
-                                        </div>   
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <button type="submit" class="btn btn-warning btn-block">Create Account and Continue</button>
-                                        </div> 
-                                </div>
-                         </div>
-    
-                </div>
-            </form>
-            </div>
+            
+           
+            </div>     
+        </div>
+        </form>
       
                            
 

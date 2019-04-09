@@ -159,7 +159,7 @@ router.post('/function/:type', (req,res) => {
         }
 
         break;
-        case uploadVideo:
+        case 'uploadVideo':
         
           multer.single('video'),
           gcsMiddlewares.sendUploadToGCS,
