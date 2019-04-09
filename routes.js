@@ -160,16 +160,19 @@ router.post('/function/:type', (req,res) => {
 
         break;
         case 'uploadVideo':
+
+          console.log(req.file);
+
+          res.write("works");
+         // multer.single('video'),
+         // gcsMiddlewares.sendUploadToGCS,
+         // (req, res, next) => {
+         //   if (req.file && req.file.gcsUrl) {
+         //     return res.send(req.file.gcsUrl);
+          //  }
         
-          multer.single('video'),
-          gcsMiddlewares.sendUploadToGCS,
-          (req, res, next) => {
-            if (req.file && req.file.gcsUrl) {
-              return res.send(req.file.gcsUrl);
-            }
-        
-            return res.status(500).send('Unable to upload');
-          }
+          //  return res.status(500).send('Unable to upload');
+         // }
         break;
         default:
           res.send("NOT FOUND");
