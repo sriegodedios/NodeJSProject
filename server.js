@@ -4,6 +4,7 @@ const express = require('express')
 const layout = require('express-layout')
 const routes = require('./routes')
 const app = express()
+const gcsMiddlewares = require('./middlewares/google-cloud-storage')
 
 const port = 3000;
 //var httpsServer = https.createServer(options, app);

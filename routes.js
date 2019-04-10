@@ -17,17 +17,10 @@ router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 var crypto = require('crypto');
 
-const Multer = require('multer');
-  
-  const multer = Multer({
-    storage: Multer.MemoryStorage,
-    limits: {
-      fileSize: 10 * 1024 * 1024, // Maximum file size is 10MB
-    },
-  });
-  
+var createVideo = require('./modules/CreateVideo');
 
 
+const uploaderMiddlewares = require('./middlewares/uploader');
 
 
 
@@ -111,6 +104,34 @@ router.get('/function/activation/:activationLink', (req,res) => {
   //res.send("Account Activated");
   
 })
+
+/*
+router.post('/function/uploadVideo', multer.single('video'), gcsMiddlewares.sendUploadToGCS, (req, res, next) =>{
+    console.log(req.file)
+    console.log(req.video)
+    if (req.file && req.file.gcsUrl) {
+         return res.send(req.file.gcsUrl);
+      }
+        
+     return res.status(500).send('Unable to upload');
+
+});
+*/
+
+router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'), uploaderMiddlewares.sendUploadToGCS, (req, res, next) =>{
+    //console.log(req.file)
+    //console.log(req.video)
+     if (req.file && req.file.cloudStoragePublicUrl) {
+      var imageUrl = req.file.cloudStoragePublicUrl;
+      createVideo.NewVideo(req,res,imageUrl)
+      return res.status(200).send('Upload Completed')
+    }
+        
+     return res.status(500).send('Unable to upload');
+
+});
+
+
 router.post('/function/:type', (req,res) => {
   var type = req.params.type;
   switch(type){
@@ -158,21 +179,6 @@ router.post('/function/:type', (req,res) => {
           res.redirect('/login/?failure=1');
         }
 
-        break;
-        case 'uploadVideo':
-
-          console.log(req.file);
-
-          res.write("works");
-         // multer.single('video'),
-         // gcsMiddlewares.sendUploadToGCS,
-         // (req, res, next) => {
-         //   if (req.file && req.file.gcsUrl) {
-         //     return res.send(req.file.gcsUrl);
-          //  }
-        
-          //  return res.status(500).send('Unable to upload');
-         // }
         break;
         default:
           res.send("NOT FOUND");
@@ -290,7 +296,9 @@ router.route('/login')
       .get((req, res) => {
         if (req.session.loggedin) {
           //res.send('Welcome back, ' + req.session.username + '!');
-          res.render('pages/upload',{title: 'Upload'})
+          var userID = req.session.user_id;
+          console.log(userID);
+          res.render('pages/upload',{title: 'Upload', UserID: userID})
           
           
         } else {

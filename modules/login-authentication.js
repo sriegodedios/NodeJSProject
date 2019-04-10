@@ -37,8 +37,10 @@ function Authenticate(req, res, Username, Password)
 
           //Login User and their account is activated
           req.session.loggedin = true;
-          req.username = Username;
-
+          req.session.username = Username;
+          console.log("ID: "+result[0].ID);
+          req.session.user_id = result[0].ID
+            
 
           res.redirect('/home')
 

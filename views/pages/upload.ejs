@@ -293,8 +293,8 @@ a.card:hover {
         <div class="container-fluid" style="padding-top: 20px">
                 <div class="col-lg-8 offset-lg-2">
                 <h3>Upload Video</h2>
-                <form method="post" action="/function/uploadVideo">
-                    <input type="hidden" name="ID"/>
+                <form enctype="multipart/form-data" method="post" action="/function/uploadVideo">
+                    <input type="hidden" value="<%= UserID %>" name="ID"/>
                 <div class="row space">
                     <div class="col-lg-12">
                         
@@ -305,11 +305,11 @@ a.card:hover {
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input class="form-control" type="text"/>
+                                    <input name="Title" class="form-control" type="text"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="5"></textarea>
+                                    <textarea name="Description" class="form-control" rows="5"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +325,7 @@ a.card:hover {
                             <div class="card-body">
                                 <div class="form-group">
                                      <label for="exampleFormControlFile1">Input File</label>
-                                     <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                     <input type="file" name="video" class="form-control-file" id="exampleFormControlFile1">
  
                                 </div>
                               
