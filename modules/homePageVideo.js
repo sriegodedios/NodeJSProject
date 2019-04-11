@@ -19,7 +19,7 @@ var con = new mysql.createConnection({
 
 function ConstructHomePage(req, res)
 {
-  console.log("IN THE RENDER")
+  //console.log("IN THE RENDER")
 
     var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
     con.query(sql, function (err, result) {
@@ -28,6 +28,7 @@ function ConstructHomePage(req, res)
           throw err;
         }else{
           console.log("IN THE RENDER")
+          console.log(result)
           res.render('pages/home',{title: 'Home', videos: result});
         }
           
