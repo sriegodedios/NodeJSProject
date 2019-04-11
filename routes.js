@@ -313,6 +313,7 @@ router.route('/login')
 
           });
 
+          console.log(test)
           res.render('pages/home',{title: 'Home'});
           
         } else {
