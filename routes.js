@@ -309,7 +309,7 @@ router.route('/login')
               if (err) throw err;
               console.log("IN THE RENDER")
 
-          res.render('pages/home',{title: 'Home', videos: result});
+              res.render('pages/home',{title: 'Home'});
 
           });
           
