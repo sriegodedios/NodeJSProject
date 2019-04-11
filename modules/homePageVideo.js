@@ -22,9 +22,9 @@ function ConstructHomePage(req, res)
     var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
     con.query(sql, function (err, result) {
         if (err) throw err;
-          
+          Console.log("IN THE RENDER")
 
-          return res.render('pages/home',{title: 'Home', videos: result});
+          res.render('pages/home',{title: 'Home', videos: result});
 
     });
 
