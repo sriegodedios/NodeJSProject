@@ -18,6 +18,7 @@ router.use(bodyParser.urlencoded({ extended: true }))
 var crypto = require('crypto');
 
 var createVideo = require('./modules/CreateVideo');
+var homepage = require('./modules/homePageVideo');
 
 
 const uploaderMiddlewares = require('./middlewares/uploader');
@@ -283,8 +284,10 @@ router.route('/login')
       .get((req, res) => {
         if (req.session.loggedin) {
           //res.send('Welcome back, ' + req.session.username + '!');
-          res.render('pages/home',{title: 'Home'})
-          
+          //res.render('pages/home',{title: 'Home'})
+          //Create Home page
+
+          homepage.ConstructHomePage(req,res);
           
         } else {
          res.redirect('/login')
