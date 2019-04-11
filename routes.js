@@ -291,7 +291,7 @@ router.route('/login')
 
           //console.log(req.session.homepage)
 
-          res.render('pages/home',{title: 'Home'})
+          //res.render('pages/home',{title: 'Home'})
           
         } else {
          res.redirect('/login')
