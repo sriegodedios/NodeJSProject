@@ -25,8 +25,9 @@ function ConstructHomePage(req, res)
     con.query(sql, function (err, result) {
         if (err) throw err;
          // console.log("IN THE RENDER")
-          req.session.homepage = result
+          //req.session.homepage = result
          // res.render('pages/home',{title: 'Home', videos: result});
+         return res.send(result)
 
     });
 

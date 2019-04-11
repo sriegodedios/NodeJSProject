@@ -23,7 +23,7 @@ function NewVideo(req,res,videoLink)
     con.query(sql, [req.session.user_id, req.body.Title, videoLink, req.body.Description],function (err, result) {
          if (err) throw err;
 
-         return res.send(result)
+         res.render('pages/home',{title: 'Home'})
       //console.log(result)
       
     });
