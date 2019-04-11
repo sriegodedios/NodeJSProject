@@ -19,6 +19,8 @@ var con = new mysql.createConnection({
 
 function ConstructHomePage(req, res)
 {
+  console.log("IN THE RENDER")
+
     var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
     con.query(sql, function (err, result) {
         if (err) throw err;
