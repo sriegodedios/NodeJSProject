@@ -289,7 +289,7 @@ router.route('/login')
 
           homepage.ConstructHomePage(req,res)
 
-          console.log(req.session.homepage)
+          //console.log(req.session.homepage)
 
           res.render('pages/home',{title: 'Home'})
           

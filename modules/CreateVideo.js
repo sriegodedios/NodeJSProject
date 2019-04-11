@@ -22,8 +22,9 @@ function NewVideo(req,res,videoLink)
     var sql = "INSERT INTO `Videos` (UserId, Title, CloudLink, Description) VALUES (?,?,?,?)";
     con.query(sql, [req.session.user_id, req.body.Title, videoLink, req.body.Description],function (err, result) {
          if (err) throw err;
-      
-      console.log(result)
+
+         return res.send(result)
+      //console.log(result)
       
     });
     
