@@ -286,7 +286,15 @@ router.route('/login')
           //res.send('Welcome back, ' + req.session.username + '!');
           //res.render('pages/home',{title: 'Home'})
           //Create Home page
+          var mysql = require('mysql')
+          var fs = require('fs');
+          let rawdata = fs.readFileSync(__dirname+'/../credentials.json','utf8');  
+          let credentials = JSON.parse(rawdata)
 
+          var user = credentials["credentials"]["mysql"]["account"];
+          var dbPassword = credentials["credentials"]["mysql"]["password"];
+          var dbhost = credentials["credentials"]["mysql"]["host"];
+          var crypto = require('crypto');
 
           var con = new mysql.createConnection({
             multipleStatements: true,
@@ -295,7 +303,7 @@ router.route('/login')
             password: dbPassword,
             database: "sriegode_Application"
           });
-          
+
           var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
           con.query(sql, function (err, result) {
               if (err) throw err;
