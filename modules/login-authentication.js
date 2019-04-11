@@ -41,7 +41,7 @@ function Authenticate(req, res, Username, Password)
           console.log("ID: "+result[0].ID);
           req.session.user_id = result[0].ID
             
-
+          
           res.redirect('/home')
 
 

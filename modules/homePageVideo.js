@@ -16,36 +16,22 @@ var con = new mysql.createConnection({
   database: "sriegode_Application"
 });
 
+
 function ConstructHomePage(req, res)
 {
-  //console.log("IN THE RENDER")
-    
-    get_info(parm, function(result){
-      var t = result;
-      console.log("CHECK")
-      res.render('pages/home',{title: 'Home', videos: t});
+  console.log("IN THE RENDER")
 
-      //rest of your code goes in here
-   });
+    var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+         // console.log("IN THE RENDER")
+          req.session.homepage = result
+         // res.render('pages/home',{title: 'Home', videos: result});
+
+    });
 
 
 
 }
-
-
-function get_info(data, callback){
-
-  var sql = "SELECT a from b where info = data";
-
-  var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
-  con.query(sql, function (err, result) {
-      if (err) throw err;
-      
-        
-        
-
-  });
-}
-
 
 module.exports.ConstructHomePage = ConstructHomePage;
