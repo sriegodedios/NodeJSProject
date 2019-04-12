@@ -51,14 +51,7 @@ function ConstructHomePage(req, res)
       })
       .on('end', function(result, next) {
         // all rows have been received
-        var temp2 = []
-        for (var row in temp)
-        {
-          temp2.push(row)
-        }
-
-        res.send(temp2);
-        next();
+        console.log(result[0])
       });
 
       
