@@ -36,6 +36,8 @@ function ConstructHomePage(req, res)
     
 
     var s ="";
+    console.log(temp.length)
+
     for(var i = 0; i < temp.length; i ++)
     {
       s +=  '<div class="col-md-3">'
@@ -45,7 +47,7 @@ function ConstructHomePage(req, res)
       s +=    '</video>'
       s +=    '<div class="card-body">'
       s +=       ' <h5> This is a test of the video</h5>'
-      s +=    '   Check'
+      s +=    'Check'
       s +=   ' </div>'
       s +=      ' </a>'
       s += ' </div>'
