@@ -347,7 +347,7 @@ router.route('/login')
       });
 
 
-      router.route('/getVideos')
+      router.route('function/getVideos')
       .get((req, res) => {
          homepage.ConstructHomePage(req,res)
       })
