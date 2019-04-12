@@ -34,6 +34,8 @@ function ConstructHomePage(req, res)
 
     console.log(temp)
 
+    res.render('pages/home',{title: 'Home', videos: temp});
+
   /* var temp = [];
     var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
     query
