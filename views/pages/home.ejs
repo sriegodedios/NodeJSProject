@@ -282,44 +282,23 @@ a.card:hover {
                     <div class="row">
 
                         <div class="row  video-layout">
-                                <%- data %>
-                                <% 
-
+                              
                                 
-                                for(var i = 0;i < data.length;i++) { %>      
-                                    <%= data[i].VideoId %>
-                                    <div class="col-md-3">
-                                        <a href="/test" class="card" display: inline-block">
-                                            <video class="card-img-top" width="320" height="240" no-controls>
-                                                <source src="https://storage.googleapis.com/sriegodedios/1554866606493MVI_0187.MP4" type="video/mp4">
-                                            </video>
-                                            <div class="card-body">
-                                                <h5> This is a test of the video</h5>
-                                                Check
-
-                                            </div>
-
-                                    </a>
-                                    </div>
-
-                                <% } %>
-                            <div class="col-md-3">
-                                <a href="/test" class="card" display: inline-block">
-                                    <video class="card-img-top" width="320" height="240" no-controls>
-                                        <source src="https://storage.googleapis.com/sriegodedios/15549352199530B4FB553-69F1-4EE0-ACC9-E5E0F4126B23.MOV" type="video/mp4">
-                                    </video>
-                                    <div class="card-body">
-                                        <h5> This is a test of the video</h5>
-                                        Check
-
-                                    </div>
+                                
+                            <div id="result">
 
 
-
-                                </a>
                             </div>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$.ajax({ url: "function/getVideos",
+        context: document.body,
+        success: function(){
+            $('#result').html(data);  
+        }});
+});
+</script>
 
                                 <!----nav class="navbar navbar-expand-lg navbar-light bg-light">
 
