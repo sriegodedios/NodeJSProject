@@ -31,6 +31,7 @@ function ConstructHomePage(req, res)
 
    // });
 
+   var temp = [];
     var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
     query
       .on('error', function(err) {
@@ -40,18 +41,18 @@ function ConstructHomePage(req, res)
       .on('fields', function(fields) {
         // the field packets for the rows to follow
       })
-      .on('result', function(row, result) {
+      .on('result', function(row) {
         // Pausing the connnection is useful if your processing involves I/O
         //con.pause();
-        result.addRow(row)
+        temp.push(row)
        // processRow(row, function() {
        //   con.resume();
        // });
       })
-      .on('end', function(result) {
+      .on('end', function(rows) {
         // all rows have been received
-        console.log(result)
-        return res.send(result)
+        console.log(rows)
+        return res.send(rows)
 
       });
 
