@@ -349,23 +349,61 @@ router.route('/login')
 
       router.route('/getVideos')
       .get((req, res) => {
-        homepage.ConstructHomePage(req,res)
-      })
+       // function ConstructHomePage(req, res)
 
-    function AuthRedirect(req, res, path)
-    {
-      if (req.session.loggedin) {
-        //res.send('Welcome back, ' + req.session.username + '!');
-        res.render('pages/home',{title: 'Home'})
-        
-        
-      } else {
-        res.redirect('/login')
-      }
-      
-      res.end();
-    
-    }
+          console.log("IN THE RENDER")
+
+          var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
+          con.query(sql, function (err, result) {
+                        if (err) throw err;
+                        // console.log("IN THE RENDER")
+                        //req.session.homepage = result
+                        // res.render('pages/home',{title: 'Home', videos: result});
+                        //console.log(result)
+                        //return result;
+                        setValue(result)
+
+
+                      });
+            
+
+            var s ="";
+            console.log(temp.length)
+
+            for(var i = 0; i < temp.length; i ++)
+            {
+              s +=  '<div class="col-md-3">'
+              s +=  '<a href="/test" class="card" display: inline-block">'
+              s +=  '<video class="card-img-top" width="320" height="240" no-controls>'
+              s +=     '<source src="'+temp[i].CloudLink+'" type="video/mp4">'
+              s +=    '</video>'
+              s +=    '<div class="card-body">'
+              s +=       ' <h5> '+temp[i].Title+'</h5>'
+              s +=    'Check'
+              s +=   ' </div>'
+              s +=      ' </a>'
+              s += ' </div>'
+
+            }          
+            console.log(s)
+            res.send(s);
+        })
+
+            function AuthRedirect(req, res, path)
+            {
+              if (req.session.loggedin) {
+                //res.send('Welcome back, ' + req.session.username + '!');
+                res.render('pages/home',{title: 'Home'})
+                
+                
+              } else {
+                res.redirect('/login')
+              }
+              
+              res.end();
+            
+            }
+
 
 
   
