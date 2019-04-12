@@ -163,6 +163,14 @@ router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'),
 
 });
 
+router.route('output/getVideos')
+.get((req, res) => {
+  homepage.ConstructHomePage(req,res)
+  res.send("OK");
+
+//
+});
+
 
 router.post('/function/:type', (req,res) => {
   var type = req.params.type;
@@ -215,12 +223,10 @@ router.post('/function/:type', (req,res) => {
         default:
           res.send("NOT FOUND");
         break;
-
-
-        
-
   }
 });
+
+
 
 
 
@@ -329,13 +335,7 @@ router.route('/login')
         res.end();
       });
 
-    router.route('function/getVideos')
-      .get((req, res) => {
-        homepage.ConstructHomePage(req,res)
-        res.send("OK")
 
-//
-      });
     
     router.route('/upload')
       .get((req, res) => {
