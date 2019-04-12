@@ -33,9 +33,26 @@ function ConstructHomePage(req, res)
 
 
               });
+    
 
-    console.log(temp)
-    res.send(temp);
+    var s ="";
+    for(var i = 0; i < temp.length; i ++)
+    {
+      s +=  '<div class="col-md-3">'
+      s +=  '<a href="/test" class="card" display: inline-block">'
+      s +=  '<video class="card-img-top" width="320" height="240" no-controls>'
+      s +=     '<source src="https://storage.googleapis.com/sriegodedios/15549352199530B4FB553-69F1-4EE0-ACC9-E5E0F4126B23.MOV" type="video/mp4">'
+      s +=    '</video>'
+      s +=    '<div class="card-body">'
+      s +=       ' <h5> This is a test of the video</h5>'
+      s +=    '   Check'
+      s +=   ' </div>'
+      s +=      ' </a>'
+      s += ' </div>'
+
+    }          
+    console.log(s)
+    res.send(s);
     res.end();
     //
 
