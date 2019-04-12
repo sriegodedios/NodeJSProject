@@ -30,14 +30,12 @@ function ConstructHomePage(req, res)
                 console.log(result)
                 //return result;
                 setValue(result)
+
+
               });
 
     console.log(temp)
-    
-    var rend =""
 
-    
-  
 
     res.render('pages/home',{title: 'Home', data: temp});
 
@@ -70,7 +68,7 @@ function ConstructHomePage(req, res)
 }
 
 function setValue(value) {
-  temp= value;
+  temp= JSON.stringify(value);
   console.log(temp);
 }
 
