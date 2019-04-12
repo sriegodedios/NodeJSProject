@@ -25,6 +25,37 @@ const uploaderMiddlewares = require('./middlewares/uploader');
 
 
 
+/***** THE DATABASE ß */
+
+var mysql = require('mysql')
+var fs = require('fs');
+let rawdata = fs.readFileSync(__dirname+'/../credentials.json','utf8');  
+let credentials = JSON.parse(rawdata)
+//console.log(credentials["credentials"]["email"]["account"]);
+var user = credentials["credentials"]["mysql"]["account"];
+var dbPassword = credentials["credentials"]["mysql"]["password"];
+var dbhost = credentials["credentials"]["mysql"]["host"];
+var crypto = require('crypto');
+
+var con = new mysql.createConnection({
+  multipleStatements: true,
+  host: dbhost,
+  user: user,
+  password: dbPassword,
+  database: "sriegode_Application"
+});
+
+
+
+
+
+
+
+
+
+
+
+
 var CASAuthentication = require('cas-authentication');
  
 var cas = new CASAuthentication({
@@ -297,6 +328,13 @@ router.route('/login')
          res.redirect('/login')
         }
         res.end();
+      });
+
+    router.route('function/getVideos')
+      .get((req, res) => {
+
+
+
       });
     
     router.route('/upload')
