@@ -51,10 +51,13 @@ function ConstructHomePage(req, res)
       })
       .on('end', function(result, next) {
         // all rows have been received
+        var temp2 = []
+        foreach(row in temp)
+        {
+          temp2.push(row)
+        }
 
-        console.log(temp)
-        res.setHeader("Content-Type", "text/html");
-        res.send(temp)
+        res.send(temp2);
         next();
       });
 
