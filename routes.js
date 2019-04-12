@@ -150,7 +150,7 @@ router.post('/function/uploadVideo', multer.single('video'), gcsMiddlewares.send
 });
 */
 
-router.route('function/getVideos')
+router.route('/function/getVideos')
 .get((req, res) => {
    homepage.ConstructHomePage(req,res)
 })
