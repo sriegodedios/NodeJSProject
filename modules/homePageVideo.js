@@ -42,11 +42,11 @@ function ConstructHomePage(req, res)
       })
       .on('result', function(row) {
         // Pausing the connnection is useful if your processing involves I/O
-        con.pause();
+        //con.pause();
 
-        processRow(row, function() {
-          con.resume();
-        });
+       // processRow(row, function() {
+       //   con.resume();
+       // });
       })
       .on('end', function(result) {
         // all rows have been received
