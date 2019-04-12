@@ -347,9 +347,9 @@ router.route('/login')
       });
 
 
-      router.route('/functional/getVideos')
+      router.route('/getVideos')
       .get((req, res) => {
-        res.send("Please Stop");
+        homepage.ConstructHomePage(req,res)
       })
 
     function AuthRedirect(req, res, path)
