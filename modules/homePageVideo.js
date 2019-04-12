@@ -52,7 +52,7 @@ function ConstructHomePage(req, res)
       .on('end', function(result, next) {
         // all rows have been received
         var temp2 = []
-        foreach(row in temp)
+        for (var row in temp)
         {
           temp2.push(row)
         }
