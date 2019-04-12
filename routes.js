@@ -318,7 +318,7 @@ router.route('/login')
           //res.render('pages/home',{title: 'Home'})
           //Create Home page
 
-          homepage.ConstructHomePage(req,res)
+          //homepage.ConstructHomePage(req,res)
 
          
           res.render('pages/home',{title: 'Home'})
