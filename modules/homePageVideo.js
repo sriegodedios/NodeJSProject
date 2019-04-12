@@ -22,21 +22,24 @@ function ConstructHomePage(req, res)
   console.log("IN THE RENDER")
 
    var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
-   var temp = con.query(sql, function (err, rows) {
+   var temp = con.query(sql, function (err, result) {
                 if (err) throw err;
                 // console.log("IN THE RENDER")
                 //req.session.homepage = result
                 // res.render('pages/home',{title: 'Home', videos: result});
-                console.log(rows)
+                console.log(result)
                 //return result;
-                setValue(rows)
+                setValue(result)
               });
 
     console.log(temp)
+    
+    var rend =""
 
+    
   
 
-    res.render('pages/home',{title: 'Home', videos: temp});
+    res.render('pages/home',{title: 'Home', data: temp});
 
   /* var temp = [];
     var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
