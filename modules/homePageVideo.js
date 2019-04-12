@@ -27,7 +27,7 @@ function ConstructHomePage(req, res)
                 // console.log("IN THE RENDER")
                 //req.session.homepage = result
                 // res.render('pages/home',{title: 'Home', videos: result});
-                console.log(result)
+                //console.log(result)
                 //return result;
                 setValue(result)
 
@@ -89,7 +89,7 @@ function ConstructHomePage(req, res)
 }
 
 function setValue(value) {
-  temp= JSON.stringify(value);
+  temp= value;
   console.log(temp);
 }
 
