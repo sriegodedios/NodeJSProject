@@ -351,6 +351,12 @@ router.route('/login')
         res.end();
       });
 
+
+      router.route('/stop')
+      .get((req, res) => {
+        res.send("Please Stop");
+      })
+
     function AuthRedirect(req, res, path)
     {
       if (req.session.loggedin) {
