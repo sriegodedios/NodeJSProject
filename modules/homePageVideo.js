@@ -49,13 +49,14 @@ function ConstructHomePage(req, res)
        //   con.resume();
        // });
       })
-      .on('end', function(result) {
+      .on('end', function(result, next) {
         // all rows have been received
         console.log(temp)
-       
+        res.send(temp)
+        next();
       });
 
-      res.send(temp)
+      
 
 
 }
