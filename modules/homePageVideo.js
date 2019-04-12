@@ -53,7 +53,7 @@ function ConstructHomePage(req, res)
         // all rows have been received
 
         console.log(temp)
-        response.setHeader("Content-Type", "text/html");
+        res.setHeader("Content-Type", "text/html");
         res.send(temp)
         next();
       });
