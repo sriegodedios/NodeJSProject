@@ -150,6 +150,11 @@ router.post('/function/uploadVideo', multer.single('video'), gcsMiddlewares.send
 });
 */
 
+router.route('function/getVideos')
+.get((req, res) => {
+   homepage.ConstructHomePage(req,res)
+})
+
 router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'), uploaderMiddlewares.sendUploadToGCS, (req, res, next) =>{
     //console.log(req.file)
     //console.log(req.video)
@@ -347,10 +352,7 @@ router.route('/login')
       });
 
 
-      router.route('function/getVideos')
-      .get((req, res) => {
-         homepage.ConstructHomePage(req,res)
-      })
+    
 
     function AuthRedirect(req, res, path)
     {
