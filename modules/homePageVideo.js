@@ -21,17 +21,17 @@ function ConstructHomePage(req, res)
 {
   console.log("IN THE RENDER")
 
-   //var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
-   // con.query(sql, function (err, result) {
-   //     if (err) throw err;
+   var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
+    con.query(sql, function (err, result) {
+        if (err) throw err;
          // console.log("IN THE RENDER")
          //req.session.homepage = result
          // res.render('pages/home',{title: 'Home', videos: result});
-   //      return res.send(result)
+         return res.send(result[0])
 
-   // });
+    });
 
-   var temp = [];
+  /* var temp = [];
     var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
     query
       .on('error', function(err) {
@@ -52,7 +52,7 @@ function ConstructHomePage(req, res)
       .on('end', function(result, next) {
         // all rows have been received
         console.log(result)
-      });
+      });*/
 
       
 
