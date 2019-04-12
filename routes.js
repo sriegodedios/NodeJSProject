@@ -332,7 +332,7 @@ router.route('/login')
     router.route('function/getVideos')
       .get((req, res) => {
         homepage.ConstructHomePage(req,res)
-
+        res.send("OK")
 
 //
       });
