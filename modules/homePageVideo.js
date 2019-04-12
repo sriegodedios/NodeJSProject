@@ -28,7 +28,7 @@ function ConstructHomePage(req, res)
                 //req.session.homepage = result
                 // res.render('pages/home',{title: 'Home', videos: result});
                 console.log(rows)
-                return result;
+                //return result;
 
               });
 
