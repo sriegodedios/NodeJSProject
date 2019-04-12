@@ -163,12 +163,7 @@ router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'),
 
 });
 
-router.route('function/getVideos', (req, res) => {
-  homepage.ConstructHomePage(req,res)
-  res.send("OK");
 
-//
-});
 
 
 router.post('/function/:type', (req,res) => {
@@ -352,7 +347,7 @@ router.route('/login')
       });
 
 
-      router.route('/stop')
+      router.route('/functional/getVideos')
       .get((req, res) => {
         res.send("Please Stop");
       })
