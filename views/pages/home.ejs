@@ -295,7 +295,7 @@ a.card:hover {
 $(document).ready(function(){
 $.ajax({ url: "/function/getVideos",
         context: document.body,
-        success: function(){
+        success: function(data){
             $('#result').html(data);  
         }});
 });
