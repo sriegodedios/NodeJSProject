@@ -42,10 +42,10 @@ function ConstructHomePage(req, res)
       })
       .on('result', function(row) {
         // Pausing the connnection is useful if your processing involves I/O
-        connection.pause();
+        con.pause();
 
         processRow(row, function() {
-          connection.resume();
+          con.resume();
         });
       })
       .on('end', function(result) {
