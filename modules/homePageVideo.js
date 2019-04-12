@@ -40,10 +40,10 @@ function ConstructHomePage(req, res)
       .on('fields', function(fields) {
         // the field packets for the rows to follow
       })
-      .on('result', function(row) {
+      .on('result', function(row, result) {
         // Pausing the connnection is useful if your processing involves I/O
         //con.pause();
-
+        result.addRow(row)
        // processRow(row, function() {
        //   con.resume();
        // });
