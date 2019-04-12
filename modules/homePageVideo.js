@@ -42,7 +42,7 @@ function ConstructHomePage(req, res)
     {
       s +=  '<div class="col-md-3">'
       s +=  '<a href="/test" class="card" display: inline-block">'
-      s +=  '<video class="card-img-top box" width="320" height="240" no-controls>'
+      s +=  '<video class="card-img-top" width="320" height="240" no-controls>'
       s +=     '<source src="'+temp[i].CloudLink+'" type="video/mp4">'
       s +=    '</video>'
       s +=    '<div class="card-body">'
