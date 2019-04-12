@@ -29,7 +29,7 @@ function ConstructHomePage(req, res)
                 // res.render('pages/home',{title: 'Home', videos: result});
                 console.log(rows)
                 //return result;
-                return res.render('pages/home',{title: 'Home', videos: result});
+                return res.render('pages/home',{title: 'Home', videos: rows});
 
               });
 
