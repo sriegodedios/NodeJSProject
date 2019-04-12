@@ -37,7 +37,7 @@ function ConstructHomePage(req, res)
     console.log(temp)
 
 
-    res.render('pages/home',{title: 'Home', data: temp});
+    return res.render('pages/home',{title: 'Home', data: temp});
 
   /* var temp = [];
     var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
@@ -68,7 +68,7 @@ function ConstructHomePage(req, res)
 }
 
 function setValue(value) {
-  temp= JSON.stringify(value);
+  temp= value;
   console.log(temp);
 }
 
