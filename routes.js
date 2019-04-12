@@ -163,8 +163,7 @@ router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'),
 
 });
 
-router.route('output/getVideos')
-.get((req, res) => {
+router.route('function/getVideos', (req, res) => {
   homepage.ConstructHomePage(req,res)
   res.send("OK");
 
