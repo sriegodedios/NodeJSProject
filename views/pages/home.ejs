@@ -282,25 +282,7 @@ a.card:hover {
                     <div class="row">
 
                         <div class="row  video-layout">
-                                <% videos.forEach(function (video) { %>
-                                  
-                                    <div class="col-md-3">
-                                            <a href="/videos/<%= video.VideoId %>" class="card" display: inline-block">
-                                                <video class="card-img-top" width="320" height="240" no-controls>
-                                                    <source src="<%= video.CloudLink %>" type="video/mp4">
-                                                </video>
-                                                <div class="card-body">
-                                                    <h5><% video.Title %></h5>
-                                                    <% video.Description %>
-            
-                                                </div>
-            
-                                        </a>
-                                        </div>
-                                    
-
-
-                                 <% }) %>
+                                <%= obj %>
                             <div class="col-md-3">
                                 <a href="/test" class="card" display: inline-block">
                                     <video class="card-img-top" width="320" height="240" no-controls>
