@@ -51,7 +51,7 @@ function ConstructHomePage(req, res)
       })
       .on('end', function(result, next) {
         // all rows have been received
-        console.log(result[0])
+        console.log(result)
       });
 
       
