@@ -52,10 +52,10 @@ function ConstructHomePage(req, res)
       .on('end', function(result) {
         // all rows have been received
         console.log(temp)
-        res.send(temp)
-
+       
       });
 
+      res.send(temp)
 
 
 }
