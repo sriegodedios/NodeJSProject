@@ -35,9 +35,10 @@ function ConstructHomePage(req, res)
               });
 
     console.log(temp)
+    res.send(temp);
+    res.end();
 
-
-    res.render('pages/home',{title: 'Home', data: temp});
+    //res.render('pages/home',{title: 'Home', data: temp});
 
   /* var temp = [];
     var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
