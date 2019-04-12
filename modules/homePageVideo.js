@@ -49,10 +49,10 @@ function ConstructHomePage(req, res)
        //   con.resume();
        // });
       })
-      .on('end', function(rows) {
+      .on('end', function(result) {
         // all rows have been received
-        console.log(rows)
-        return res.send(rows)
+        console.log(temp)
+        return res.send(temp)
 
       });
 
