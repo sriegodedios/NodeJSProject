@@ -31,7 +31,7 @@ function ConstructHomePage(req, res)
 
    // });
 
-    var query = connection.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
+    var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
     query
       .on('error', function(err) {
         // Handle error, an 'end' event will be emitted after this as well
