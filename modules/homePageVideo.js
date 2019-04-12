@@ -21,7 +21,7 @@ function ConstructHomePage(req, res)
 {
   console.log("IN THE RENDER")
 
-   var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
+   var sql ="SELECT * FROM VIDEOS"
    con.query(sql, function (err, rows) {
   
                 // console.log("IN THE RENDER")
