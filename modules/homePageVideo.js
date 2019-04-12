@@ -16,7 +16,7 @@ var con = new mysql.createConnection({
   database: "sriegode_Application"
 });
 
-
+var temp = [];
 function ConstructHomePage(req, res)
 {
   console.log("IN THE RENDER")
@@ -29,8 +29,7 @@ function ConstructHomePage(req, res)
                 // res.render('pages/home',{title: 'Home', videos: result});
                 console.log(rows)
                 //return result;
-                return res.render('pages/home',{title: 'Home', videos: rows});
-
+                setValue(rows)
               });
 
     console.log(temp)
@@ -61,6 +60,11 @@ function ConstructHomePage(req, res)
       
 
 
+}
+
+function setValue(value) {
+  temp= value;
+  console.log(temp);
 }
 
 module.exports.ConstructHomePage = ConstructHomePage;
