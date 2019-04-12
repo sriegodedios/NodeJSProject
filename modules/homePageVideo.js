@@ -37,6 +37,7 @@ function ConstructHomePage(req, res)
     console.log(temp)
     res.send(temp);
     res.end();
+    //
 
     //res.render('pages/home',{title: 'Home', data: temp});
 
