@@ -76,8 +76,8 @@ function RenderVideosHomePage(req, res)
     
 
   var s ="";
-  console.log(videos.length)
-  res.render('pages/home',{title: 'Home', videos: videos})
+  console.log(videos)
+  
 
 }
 
@@ -104,6 +104,7 @@ function setValue(value) {
 function setVideos(value){
   videos = value;
   console.log(videos);
+  res.render('pages/home',{title: 'Home', videos: value})
 }
 
 module.exports.ConstructHomePage = ConstructHomePage;
