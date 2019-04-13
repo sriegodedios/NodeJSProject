@@ -311,9 +311,9 @@ router.route('/login')
     router.route('/home')
       .get((req, res) => {
         if (req.session.loggedin) {
-  
-          homepage.ConstructHomePage(req,res);
-          //res.render('pages/home',{title: 'Home'})
+
+         
+          res.render('pages/home',{title: 'Home'})
           
         } else {
          res.redirect('/login')

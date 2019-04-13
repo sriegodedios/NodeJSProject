@@ -38,7 +38,7 @@ function ConstructHomePage(req, res)
     var s ="";
     console.log(temp.length)
 
-   /* for(var i = 0; i < temp.length; i ++)
+    for(var i = 0; i < temp.length; i ++)
     {
       s +=  '<div class="col-md-3">'
       s +=  '<a href="/video/'+temp[i].VideoId+'" class="card" display: inline-block">'
@@ -47,7 +47,7 @@ function ConstructHomePage(req, res)
       s +=    '</video>'
       s +=    '<div class="card-body">'
       s +=       ' <h5> '+temp[i].Title+'</h5>'
-      s +=    temp[i].Username
+      s +=    'Check'
       s +=   ' </div>'
       s +=      ' </a>'
       s += ' </div>'
@@ -55,35 +55,8 @@ function ConstructHomePage(req, res)
     }          
     console.log(s)
     res.send(s);
-    res.end();*/
-
-    res.render('pages/home',{title: 'Home', videos: temp});
+    res.end();
 }
-
-var videos = [];
-function RenderVideosHomePage(req, res)
-{
-  var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
-  con.query(sql, function (err, result) {
-                if (err) throw err;
-                // console.log("IN THE RENDER")
-                //req.session.homepage = result
-                // res.render('pages/home',{title: 'Home', videos: result});
-                //console.log(result)
-                //return result;
-                setVideos(res,result);
-
-
-  });
-    
-
-  var s ="";
-  console.log(videos)
-  
-
-}
-
-
 function FetchVideo(req, res, id)
 {
   console.log(id)
@@ -103,12 +76,5 @@ function setValue(value) {
   console.log(temp);
 }
 
-function setVideos(res, value){
-  videos = value;
-  console.log(videos);
-  
-}
-
 module.exports.ConstructHomePage = ConstructHomePage;
 module.exports.FetchVideo = FetchVideo;
-module.exports.RenderVideosHomePage = RenderVideosHomePage;
