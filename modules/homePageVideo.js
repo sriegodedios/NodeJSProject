@@ -41,7 +41,7 @@ function ConstructHomePage(req, res)
     for(var i = 0; i < temp.length; i ++)
     {
       s +=  '<div class="col-md-3">'
-      s +=  '<a href="/video/'+temp[i]+'" class="card" display: inline-block">'
+      s +=  '<a href="/video/'+temp[i].VideoId+'" class="card" display: inline-block">'
       s +=  '<video class="card-img-top" width="320" height="240" no-controls>'
       s +=     '<source src="'+temp[i].CloudLink+'" type="video/mp4">'
       s +=    '</video>'
