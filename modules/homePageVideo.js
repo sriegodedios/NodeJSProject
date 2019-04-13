@@ -69,7 +69,7 @@ function RenderVideosHomePage(req, res)
                 // res.render('pages/home',{title: 'Home', videos: result});
                 //console.log(result)
                 //return result;
-                setValue(result)
+                setVideos(result);
 
 
   });
@@ -78,10 +78,6 @@ function RenderVideosHomePage(req, res)
   var s ="";
   console.log(videos.length)
   res.render('pages/home',{title: 'Home', videos: videos})
-  
-
-
-
 
 }
 

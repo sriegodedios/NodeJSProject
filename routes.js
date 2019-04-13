@@ -311,6 +311,7 @@ router.route('/login')
     router.route('/home')
       .get((req, res) => {
         if (req.session.loggedin) {
+  
           homepage.RenderVideosHomePage(req,res);
           //res.render('pages/home',{title: 'Home'})
           
