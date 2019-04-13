@@ -59,10 +59,10 @@ function ConstructHomePage(req, res)
 }
 function FetchVideo(req, res, id)
 {
-  var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, V.Description, V.CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID WHERE VideoId = ?"
+  var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, V.Description, V.CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID WHERE V.VideoId = ?"
   con.query(sql,[id],function (err, result) {
     if (err) throw err;
-
+    console.log(result)
     var temp = result[0];
     res.send(temp)
 
