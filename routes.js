@@ -319,7 +319,7 @@ router.route('/login')
 
     router.route('/video/:id')
       .get((req, res) =>{
-        homepage.FetchVideo(req,res,req.param.id)
+        homepage.FetchVideo(req,res,req.params.id)
       });
 
     router.route('/home')
