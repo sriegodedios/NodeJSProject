@@ -47,7 +47,7 @@ function ConstructHomePage(req, res)
       s +=    '</video>'
       s +=    '<div class="card-body">'
       s +=       ' <h5> '+temp[i].Title+'</h5>'
-      s +=    'Check'
+      s +=    temp[i].Username
       s +=   ' </div>'
       s +=      ' </a>'
       s += ' </div>'
