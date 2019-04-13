@@ -311,14 +311,8 @@ router.route('/login')
     router.route('/home')
       .get((req, res) => {
         if (req.session.loggedin) {
-          //res.send('Welcome back, ' + req.session.username + '!');
+          homepage.RenderVideosHomePage(req,res);
           //res.render('pages/home',{title: 'Home'})
-          //Create Home page
-
-          //homepage.ConstructHomePage(req,res)
-
-         
-          res.render('pages/home',{title: 'Home'})
           
         } else {
          res.redirect('/login')

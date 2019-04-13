@@ -57,6 +57,35 @@ function ConstructHomePage(req, res)
     res.send(s);
     res.end();
 }
+
+var videos = [];
+function RenderVideosHomePage(req, res)
+{
+  var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
+  con.query(sql, function (err, result) {
+                if (err) throw err;
+                // console.log("IN THE RENDER")
+                //req.session.homepage = result
+                // res.render('pages/home',{title: 'Home', videos: result});
+                //console.log(result)
+                //return result;
+                setValue(result)
+
+
+  });
+    
+
+  var s ="";
+  console.log(videos.length)
+  res.render('pages/home',{title: result[0].Title, videos: videos})
+  
+
+
+
+
+}
+
+
 function FetchVideo(req, res, id)
 {
   console.log(id)
@@ -76,5 +105,11 @@ function setValue(value) {
   console.log(temp);
 }
 
+function setVideos(value){
+  videos = value;
+  //console.log(temp);
+}
+
 module.exports.ConstructHomePage = ConstructHomePage;
 module.exports.FetchVideo = FetchVideo;
+module.exports.RenderVideosHomePage = RenderVideosHomePage;
