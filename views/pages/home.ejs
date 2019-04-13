@@ -290,15 +290,15 @@ a.card:hover {
                     <div class="row">
 
                         <div id ="result" class="row  video-layout">
-                              <% videos.forEach(function(videos) { %>
+                              <% videos.forEach(function(video) { %>
                                 <div class="col-md-3">
-                                    <a href="/video/<%= videos[i].VideoId %>" class="card" style="display: inline-block">
+                                    <a href="/video/<%= video.VideoId %>" class="card" style="display: inline-block">
                                         <video class="card-img-top" width="320" height="240" no-controls>
-                                            <source src="<%= videos[1].CloudLink %>" type="video/mp4">
+                                            <source src="<%= video.CloudLink %>" type="video/mp4">
                                         </video>
                                         <div class="card-body">
-                                         <h5><%= videos[i].Description %></h5>
-                                            <%= videos[i].Username %>
+                                         <h5><%= video.Description %></h5>
+                                            <%= video.Username %>
                                          </div>
                                     </a>
                                 </div>
