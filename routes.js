@@ -312,7 +312,7 @@ router.route('/login')
       .get((req, res) => {
         if (req.session.loggedin) {
   
-          homepage.RenderVideosHomePage(req,res);
+          homepage.ConstructHomePage(req,res);
           //res.render('pages/home',{title: 'Home'})
           
         } else {

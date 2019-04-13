@@ -38,7 +38,7 @@ function ConstructHomePage(req, res)
     var s ="";
     console.log(temp.length)
 
-    for(var i = 0; i < temp.length; i ++)
+   /* for(var i = 0; i < temp.length; i ++)
     {
       s +=  '<div class="col-md-3">'
       s +=  '<a href="/video/'+temp[i].VideoId+'" class="card" display: inline-block">'
@@ -55,7 +55,9 @@ function ConstructHomePage(req, res)
     }          
     console.log(s)
     res.send(s);
-    res.end();
+    res.end();*/
+
+    res.render('pages/home',{title: 'Home', videos: temp});
 }
 
 var videos = [];
@@ -69,7 +71,7 @@ function RenderVideosHomePage(req, res)
                 // res.render('pages/home',{title: 'Home', videos: result});
                 //console.log(result)
                 //return result;
-                setVideos(res, result);
+                setVideos(res,result);
 
 
   });
@@ -104,7 +106,7 @@ function setValue(value) {
 function setVideos(res, value){
   videos = value;
   console.log(videos);
-  res.render('pages/home',{title: 'Home', videos: value})
+  
 }
 
 module.exports.ConstructHomePage = ConstructHomePage;
