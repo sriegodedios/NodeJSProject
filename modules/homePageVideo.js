@@ -56,37 +56,19 @@ function ConstructHomePage(req, res)
     console.log(s)
     res.send(s);
     res.end();
-    //
-
-    //res.render('pages/home',{title: 'Home', data: temp});
-
-  /* var temp = [];
-    var query = con.query('SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID');
-    query
-      .on('error', function(err) {
-        // Handle error, an 'end' event will be emitted after this as well
-        throw err
-      })
-      .on('fields', function(fields) {
-        // the field packets for the rows to follow
-      })
-      .on('result', function(row) {
-        // Pausing the connnection is useful if your processing involves I/O
-        //con.pause();
-        temp.push(row)
-       // processRow(row, function() {
-       //   con.resume();
-       // });
-      })
-      .on('end', function(result, next) {
-        // all rows have been received
-        console.log(result)
-      });*/
-
-      
-
-
 }
+function FetchVideo(req, res, id)
+{
+  var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, V.Description, V.CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID WHERE VideoId = ?"
+  con.query(sql,[id],function (err, result) {
+    if (err) throw err;
+
+    var temp = result[0];
+    res.send(temp)
+
+  });
+}
+
 
 function setValue(value) {
   temp= value;
@@ -94,3 +76,4 @@ function setValue(value) {
 }
 
 module.exports.ConstructHomePage = ConstructHomePage;
+module.exports.FetchVideo = FetchVideo;

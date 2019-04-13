@@ -316,6 +316,12 @@ router.route('/login')
        
     });
 
+
+    router.route('/video/:id')
+      .get((req, res) =>{
+        homepage.FetchVideo(req,res,req.param.id)
+      });
+
     router.route('/home')
       .get((req, res) => {
         if (req.session.loggedin) {
