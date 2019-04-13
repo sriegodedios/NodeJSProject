@@ -75,14 +75,13 @@ router.get( '/app', cas.bounce, function ( req, res, next ) {
 
 
 
-
+/*******************
+ *  Route for the main page
+ * *****************/
 router.get('/', (req, res) => {
-  //fs.readFile('templates/index.html', function(err, data) {
-   // res.writeHead(200, {'Content-Type': 'text/html'});
-   // res.write(data);
-    //res.end();
+  
     res.render('pages/index',{title:'Shane Riegodedios'});
- // });
+
 });
 
 router.get('/login', (req,res) => {
@@ -93,7 +92,9 @@ router.get('/login', (req,res) => {
   });
 });
 
-//file server
+/*******************
+ *  Route for the serving fieles
+ * *****************/
 router.get('/core/:type/:file',(req,res) => {
 
   var type = req.params.type;
@@ -125,9 +126,13 @@ router.get('/core/:type/:file',(req,res) => {
   });
 });
 
+
+
+/*******************
+ *  Route for account activation page
+ * *****************/
 router.get('/register/activated', (req,res) => {
   res.render('pages/activated', {title: 'Account Activated'})
-
 });
 
 router.get('/function/activation/:activationLink', (req,res) => {
@@ -137,24 +142,17 @@ router.get('/function/activation/:activationLink', (req,res) => {
   
 })
 
-/*
-router.post('/function/uploadVideo', multer.single('video'), gcsMiddlewares.sendUploadToGCS, (req, res, next) =>{
-    console.log(req.file)
-    console.log(req.video)
-    if (req.file && req.file.gcsUrl) {
-         return res.send(req.file.gcsUrl);
-      }
-        
-     return res.status(500).send('Unable to upload');
-
-});
-*/
-
+/*******************
+ *  Route for getting videos
+ * *****************/
 router.route('/function/getVideos')
 .get((req, res) => {
    homepage.ConstructHomePage(req,res)
 })
 
+/*******************
+ *  Route for posting videos
+ ******************/
 router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'), uploaderMiddlewares.sendUploadToGCS, (req, res, next) =>{
     //console.log(req.file)
     //console.log(req.video)
@@ -169,66 +167,59 @@ router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'),
 });
 
 
+/****************
+ *  Routes for functions
+ * 
+ ****************/
 
+ /*Email function*/
+router.post('/function/email', (req,res) => {
+  console.log(req.body)
+  var name = req.body.Name;
+  var email = req.body.Email; 
+  var subject = req.body.Subject;
+  var messege = req.body.Messege;
 
-router.post('/function/:type', (req,res) => {
-  var type = req.params.type;
-  switch(type){
-    case 'email':
-      console.log(req.body)
-      var name = req.body.Name;
-      var email = req.body.Email; 
-      var subject = req.body.Subject;
-      var messege = req.body.Messege;
+  var e = new emailer();
+  e.sendEmail(name,email,subject,messege)
+});
+/*Register Function*/
+router.post('/function/register', (req,res) => {
+  var FName = req.body.FirstName;
+  var LName = req.body.LastName;
+  var DateOfBirth = req.body.Birthday;
+  var Email = req.body.Email;
+  var Username = req.body.Username;
+  var Password = req.body.Password;
+  var Gender = req.body.Gender;
 
-      var e = new emailer();
-      e.sendEmail(name,email,subject,messege)
-      res.send('Email Sent');
-    break;
-    case 'register':
-      var FName = req.body.FirstName;
-      var LName = req.body.LastName;
-      var DateOfBirth = req.body.Birthday;
-      var Email = req.body.Email;
-      var Username = req.body.Username;
-      var Password = req.body.Password;
-      var Gender = req.body.Gender;
+ 
 
-     
+  createAccount.Insert(FName,LName,DateOfBirth,Gender,Email,Username,Password);
 
-      createAccount.Insert(FName,LName,DateOfBirth,Gender,Email,Username,Password)
+  
+  createAccount.SendActivationLink(Username, FName, LName, Email);
 
-      
-      createAccount.SendActivationLink(Username, FName, LName, Email);
-
-      res.redirect('/register/checkEmail/?FName='+FName+'&LName='+LName+'&Email='+Email);
-      //console.log(link);
-      //res.send("Registered!")
-      break;
-      case 'authenticate':
-        var username = req.body.username;
-        var password = req.body.password;
-        console.log("authenticating start")
-        if(username && password)
-        {
-          var encryptedPassword = crypto.createHash('sha256').update(password).digest('base64');
-          //console.log("Encrypted Password: "+);
-          authentication.Authenticate(req, res, username, encryptedPassword);
-        }else{
-          res.redirect('/login/?failure=1');
-        }
-
-        break;
-        default:
-          res.send("NOT FOUND");
-        break;
+  res.redirect('/register/checkEmail/?FName='+FName+'&LName='+LName+'&Email='+Email);
+});
+/* Authenticate Function */
+router.post('/function/authenticate', (req,res) => {
+  var username = req.body.username;
+  var password = req.body.password;
+  console.log("authenticating start")
+  if(username && password)
+  {
+    var encryptedPassword = crypto.createHash('sha256').update(password).digest('base64');
+   
+    authentication.Authenticate(req, res, username, encryptedPassword);
+  }else{
+    res.redirect('/login/?failure=1');
   }
 });
 
-
-
-
-
+/****
+* Register route
+****/
 router.route('/register')
     .get((req,res) => {
       res.render('pages/register',{title:'Register'});
@@ -249,12 +240,7 @@ router.route('/register/checkEmail')
         res.render('pages/thankyou',{title:'Registration Complete!', FirstName: FName, LastName: LName, Email:Email});
 
       }
-      
-
-
-
-      
-    }) 
+  });
 
   router.route('/validate/:location')
     .get((req,res) => {
