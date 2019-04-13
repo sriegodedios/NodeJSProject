@@ -103,7 +103,7 @@ function setValue(value) {
 
 function setVideos(value){
   videos = value;
-  //console.log(temp);
+  console.log(videos);
 }
 
 module.exports.ConstructHomePage = ConstructHomePage;
