@@ -65,7 +65,7 @@ function FetchVideo(req, res, id)
     if (err) throw err;
     console.log(result)
     var temp = result[0];
-    res.send(temp)
+    res.render('pages/video',{title: result[0].Title, video: temp})
 
   });
 }
