@@ -69,7 +69,7 @@ function RenderVideosHomePage(req, res)
                 // res.render('pages/home',{title: 'Home', videos: result});
                 //console.log(result)
                 //return result;
-                setVideos(result);
+                setVideos(res, result);
 
 
   });
@@ -101,7 +101,7 @@ function setValue(value) {
   console.log(temp);
 }
 
-function setVideos(value){
+function setVideos(res, value){
   videos = value;
   console.log(videos);
   res.render('pages/home',{title: 'Home', videos: value})
