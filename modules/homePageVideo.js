@@ -77,7 +77,7 @@ function RenderVideosHomePage(req, res)
 
   var s ="";
   console.log(videos.length)
-  res.render('pages/home',{title: result[0].Title, videos: videos})
+  res.render('pages/home',{title: 'Home', videos: videos})
   
 
 
