@@ -297,30 +297,31 @@ a.card:hover {
                     <h3>Upload Video</h2>
                     <form enctype="multipart/form-data" method="post" action="/function/uploadVideo">
                         <input type="hidden" value="<%= UserID %>" name="ID"/>
+                        <div class="row space">
+                            <div class="col-md-12 col-lg-9">
+                            
+                            <div class="card">
+                                <h4 class="card-header">
+                                Upload 
+                                </h4>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Input File</label>
+                                        <input type="file" name="video" class="form-control-file" id="exampleFormControlFile1">
+    
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                 <div class="row space">
                                     <div class="col-md-12 col-lg-9">
-                                        <div class="row space">
-                                            <div class="col-md-12 col-lg-9">
-                                            
-                                            <div class="card">
-                                                <h5 class="card-header">
-                                                Upload 
-                                                </h5>
-                                                <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlFile1">Input File</label>
-                                                        <input type="file" name="video" class="form-control-file" id="exampleFormControlFile1">
-                    
-                                                    </div>
-                                                
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        
                                         <div class="card">
-                                            <h5 class="card-header">
+                                            <h4 class="card-header">
                                                 Video Information
-                                            </h5>
+                                            </h4>
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label>Title</label>
@@ -334,8 +335,23 @@ a.card:hover {
                                         </div>
                                     </div>
                                 </div>
-                               
-                            
+                                
+                                <div class="row space">
+                                        <div class="col-md-12 col-lg-9">
+                                        
+                                        <div class="card">
+                                            <div class="card-body">
+                                                
+                                                    
+                                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Upload Video</button>
+
+                
+                                        
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                             
                             </form>
