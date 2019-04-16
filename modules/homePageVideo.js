@@ -46,7 +46,7 @@ function ConstructHomePage(req, res)
       s +=     '<source src="'+temp[i].CloudLink+'" type="video/mp4">'
       s +=    '</video>'
       s +=    '<div class="card-body">'
-      s +=       ' <h5> '+temp[i].Title+'</h5>'
+      s +=       ' <h6> '+temp[i].Title+'</h6>'
       s +=    'Check'
       s +=   ' </div>'
       s +=      ' </a>'
