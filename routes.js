@@ -217,7 +217,7 @@ router.post('/function/authenticate', (req,res) => {
   }
 });
 
-router.get('/function/logout', (req,ress) => {
+router.get('/function/logout', (req,res) => {
       req.session.destroy(function(err){
           if(err){
               console.log(err);
