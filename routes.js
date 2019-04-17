@@ -85,11 +85,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req,res) => {
-  fs.readFile('templates/login.html', function(err, data) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
+    res.render('pages/login',{title: 'Login'});
     res.end();
-  });
+
 });
 
 /*******************
