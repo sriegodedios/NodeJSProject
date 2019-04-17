@@ -217,8 +217,8 @@ router.post('/function/authenticate', (req,res) => {
   }
 });
 
-router.get('/function/authenticate', (req,ress) => {
-      req.session.destroy(function(err){  
+router.get('/function/logout', (req,ress) => {
+      req.session.destroy(function(err){
           if(err){
               console.log(err);
           }
