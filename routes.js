@@ -281,7 +281,7 @@ router.route('/register/checkEmail')
 ***/
 router.route('/login')
     .get((req, res) => {
-      res.render('pages/login',{title:'Login'});
+      res.render('pages/login',{title: 'Login'});
     })
     .post((req, res) => {
       console.log(req.body)
