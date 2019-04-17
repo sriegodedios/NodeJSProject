@@ -287,7 +287,7 @@ router.route('/login')
         res.end();
       });*/
 
-      res.render('pages/login',{title: 'Login'})
+      res.render('pages/login',{title:'Login'})
     })
     .post((req, res) => {
       console.log(req.body)

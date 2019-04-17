@@ -58,6 +58,11 @@ function sendUploadToGCS (req, res, next) {
 
   stream.end(req.file.buffer);
 }
+
+function getThumbnail(req, res, next)
+{
+  
+}
 // [END process]
 
 // Multer handles parsing multipart/form-data requests.
@@ -72,6 +77,8 @@ const multer = Multer({
   }
 });
 // [END multer]
+
+
 
 module.exports = {
   getPublicUrl,
