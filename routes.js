@@ -281,11 +281,13 @@ router.route('/register/checkEmail')
 ***/
 router.route('/login')
     .get((req, res) => {
-      fs.readFile('templates/login.html', function(err, data) {
+      /*fs.readFile('templates/login.html', function(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(data);
         res.end();
-      });
+      });*/
+
+      res.render('pages/login',{title: 'Login'})
     })
     .post((req, res) => {
       console.log(req.body)
