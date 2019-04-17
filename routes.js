@@ -12,7 +12,7 @@ var CASAuthentication = require('cas-authentication');
 var request = require('request');
 var CASURL = "https://signin.k-state.edu/WebISO/";
 
-var bodyParser = require('body-parser'); 
+var bodyParser = require('body-parser');
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 var crypto = require('crypto');
@@ -29,7 +29,7 @@ const uploaderMiddlewares = require('./middlewares/uploader');
 
 var mysql = require('mysql')
 var fs = require('fs');
-let rawdata = fs.readFileSync(__dirname+'/../credentials.json','utf8');  
+let rawdata = fs.readFileSync(__dirname+'/../credentials.json','utf8');
 let credentials = JSON.parse(rawdata)
 //console.log(credentials["credentials"]["email"]["account"]);
 var user = credentials["credentials"]["mysql"]["account"];
@@ -57,7 +57,7 @@ var con = new mysql.createConnection({
 
 
 var CASAuthentication = require('cas-authentication');
- 
+
 var cas = new CASAuthentication({
   cas_url     : CASURL,
   service_url : 'https://sriegodedios.com/validate',
@@ -68,7 +68,7 @@ var cas = new CASAuthentication({
 });
 
 router.get( '/app', cas.bounce, function ( req, res, next ) {
-   
+
   res.send( '<html><body>Hello!</body></html>' );
 });
 
@@ -79,7 +79,7 @@ router.get( '/app', cas.bounce, function ( req, res, next ) {
  *  Route for the main page
  * *****************/
 router.get('/', (req, res) => {
-  
+
     res.render('pages/index',{title:'Shane Riegodedios'});
 
 });
@@ -139,7 +139,7 @@ router.get('/function/activation/:activationLink', (req,res) => {
   var link = req.params.activationLink;
   createAccount.Activate(res, link);
   //res.send("Account Activated");
-  
+
 })
 
 /*******************
@@ -161,7 +161,7 @@ router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'),
       createVideo.NewVideo(req,res,imageUrl)
       return res.status(200).send('Upload Completed')
     }
-        
+
      return res.status(500).send('Unable to upload');
 
 });
@@ -169,14 +169,14 @@ router.post('/function/uploadVideo', uploaderMiddlewares.multer.single('video'),
 
 /****************
  *  Routes for functions
- * 
+ *
  ****************/
 
  /*Email function*/
 router.post('/function/email', (req,res) => {
   console.log(req.body)
   var name = req.body.Name;
-  var email = req.body.Email; 
+  var email = req.body.Email;
   var subject = req.body.Subject;
   var messege = req.body.Messege;
 
@@ -193,11 +193,11 @@ router.post('/function/register', (req,res) => {
   var Password = req.body.Password;
   var Gender = req.body.Gender;
 
- 
+
 
   createAccount.Insert(FName,LName,DateOfBirth,Gender,Email,Username,Password);
 
-  
+
   createAccount.SendActivationLink(Username, FName, LName, Email);
 
   res.redirect('/register/checkEmail/?FName='+FName+'&LName='+LName+'&Email='+Email);
@@ -210,11 +210,23 @@ router.post('/function/authenticate', (req,res) => {
   if(username && password)
   {
     var encryptedPassword = crypto.createHash('sha256').update(password).digest('base64');
-   
+
     authentication.Authenticate(req, res, username, encryptedPassword);
   }else{
     res.redirect('/login/?failure=1');
   }
+});
+
+router.get('/function/authenticate', (req,ress) => {
+      req.session.destroy(function(err){  
+          if(err){
+              console.log(err);
+          }
+          else
+          {
+              res.redirect('/login/?loggedOut=true');
+          }
+      });
 });
 
 /****
@@ -228,11 +240,11 @@ router.route('/register')
     });
 router.route('/register/checkEmail')
     .get((req,res) =>{
-      if (Object.keys(req.query).length === 0) 
+      if (Object.keys(req.query).length === 0)
       {
         res.send("Access Denied");
       }else{
-        
+
         var FName = req.query.FName;
         var LName = req.query.LName;
         var Email = req.query.Email;
@@ -246,10 +258,10 @@ router.route('/register/checkEmail')
     .get((req,res) => {
         var ticket = req.query.ticket
         var location = req.params.location
-        
+
         request(CASURL+'serviceValidate?service=http://sriegodedios.com/validate/app/&ticket='+ticket+'&format=JSON', function (error, response, body) {
-          
-           
+
+
            console.log(body);
             const validationResponse = new CASType.CASValidationResponse(JSON.parse(body));
             if (!validationResponse.validated) {
@@ -261,6 +273,12 @@ router.route('/register/checkEmail')
         })
     });
 
+
+
+
+/**
+* Route fot login page
+***/
 router.route('/login')
     .get((req, res) => {
       fs.readFile('templates/login.html', function(err, data) {
@@ -283,23 +301,23 @@ router.route('/login')
 
 
         }else{
-          
+
           res.redirect('/login/failure=1');
 
         }
 
 
 
-            
+
             if(password != 'hi')
             {
               res.send('Access Denied')
             }else{
               res.send('This is the go')
             }
-  
-      
-       
+
+
+
     });
 
 
@@ -312,9 +330,9 @@ router.route('/login')
       .get((req, res) => {
         if (req.session.loggedin) {
 
-         
+
           res.render('pages/home',{title: 'Home'})
-          
+
         } else {
          res.redirect('/login')
         }
@@ -322,7 +340,7 @@ router.route('/login')
       });
 
 
-    
+
     router.route('/upload')
       .get((req, res) => {
         if (req.session.loggedin) {
@@ -330,8 +348,8 @@ router.route('/login')
           var userID = req.session.user_id;
           console.log(userID);
           res.render('pages/upload',{title: 'Upload', UserID: userID})
-          
-          
+
+
         } else {
          res.redirect('/login')
         }
@@ -339,25 +357,25 @@ router.route('/login')
       });
 
 
-    
+
 
     function AuthRedirect(req, res, path)
     {
       if (req.session.loggedin) {
         //res.send('Welcome back, ' + req.session.username + '!');
         res.render('pages/home',{title: 'Home'})
-        
-        
+
+
       } else {
         res.redirect('/login')
       }
-      
+
       res.end();
-    
+
     }
 
 
-  
-    
+
+
 
 module.exports = router
