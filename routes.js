@@ -85,8 +85,22 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req,res) => {
-    res.render('pages/login',{title: 'Login'});
+    
+    console.log(req.query)
+   if (Object.keys(req.query).length === 0)
+   {
+       res.render('pages/login',{title: 'Login'});
+       
+   }else
+   {
+      res.render('pages/login',{title: 'Login', err: 'Invalid Password/username'}) 
+        
+   }
+    
     res.end();
+    
+    
+
 
 });
 
@@ -180,6 +194,8 @@ router.post('/function/email', (req,res) => {
 
   var e = new emailer();
   e.sendEmail(name,email,subject,messege)
+  res.send('email sent');
+  res.end();
 });
 /*Register Function*/
 router.post('/function/register', (req,res) => {
