@@ -126,7 +126,9 @@ router.get('/core/:type/:file',(req,res) => {
     case 'pdf':
       content = 'application/pdf'
     break;
-
+    case 'img':
+      content = 'image/svg+xml'
+    break;
   }
 
   console.log(content)
@@ -340,8 +342,9 @@ router.route('/login')
       .get((req, res) => {
         if (req.session.loggedin) {
 
-
-          res.render('pages/home',{title: 'Home'})
+          //homepage.ConstructHomePage(req,res);
+          var fullname = req.session.firstname+" "+req.session.lastname
+          res.render('pages/home',{title: 'Home', name: fullname})
 
         } else {
          res.redirect('/login')
@@ -366,23 +369,6 @@ router.route('/login')
         res.end();
       });
 
-
-
-
-    function AuthRedirect(req, res, path)
-    {
-      if (req.session.loggedin) {
-        //res.send('Welcome back, ' + req.session.username + '!');
-        res.render('pages/home',{title: 'Home'})
-
-
-      } else {
-        res.redirect('/login')
-      }
-
-      res.end();
-
-    }
 
 
 

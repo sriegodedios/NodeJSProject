@@ -17,6 +17,7 @@ var con = new mysql.createConnection({
 });
 
 var temp = [];
+var temp2 = [];
 function ConstructHomePage(req, res)
 {
   console.log("IN THE RENDER")
@@ -57,6 +58,47 @@ function ConstructHomePage(req, res)
     res.send(s);
     res.end();
 }
+
+
+function ConstructHomePageAsync(req, res)
+{
+  console.log("IN THE RENDER");
+  
+
+
+   var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
+   con.query(sql, (err, result) => {
+                if (err) throw err;
+                // console.log("IN THE RENDER")
+                //req.session.homepage = result
+                // res.render('pages/home',{title: 'Home', videos: result});
+                //console.log(result)
+                //return result;
+                //setValue2(result)
+                res.render("pages/home", {title: "Home", data: result});
+
+
+     });
+     
+    return;
+    
+
+    var s ="";
+    //console.log(temp2.length)*/
+    //videosGetAsync
+   // res.render('pages/home', {title: 'Home'})
+    
+    getVideos().then((result) => {
+        console.log("got a result", result)
+        res.send(JSON.stringify(result))
+        //res.render('pages/home',{title: 'Home', data: result});
+        //res.end();
+    }).catch((err) => {
+        res.send("ERROR")
+    })
+}
+
+
 function FetchVideo(req, res, id)
 {
   console.log(id)
@@ -66,15 +108,49 @@ function FetchVideo(req, res, id)
     console.log(result)
     var temp = result[0];
     res.render('pages/video',{title: result[0].Title, video: temp})
-
+    
   });
 }
 
+
+function getVideos() {
+    
+    return new Promise(function(resolve, reject) {
+        var sql ="SELECT V.VideoId, V.UserId, A.Username, V.Title, CloudLink FROM `Videos` V INNER JOIN `Accounts` A ON V.UserId=A.ID"
+        con.query(sql, function (err, result) {
+                if (err)
+                {
+                    reject(new Error('Something went wrong!'));
+                }else
+                {
+                    resolve(result);
+                }
+    
+
+        });
+    
+    });
+    
+}
+
+
+async function videosGetAsync(res) {
+  let result;
+  result = await getVideos();
+  console.log('after await', result);
+  res.render('pages/home',{title: 'Home', data: result});
+  
+}
 
 function setValue(value) {
   temp= value;
   console.log(temp);
 }
 
+function setValue2(value) {
+  temp2= value;
+  console.log(temp2);
+}
 module.exports.ConstructHomePage = ConstructHomePage;
+module.exports.ConstructHomePageAsync = ConstructHomePageAsync;
 module.exports.FetchVideo = FetchVideo;
